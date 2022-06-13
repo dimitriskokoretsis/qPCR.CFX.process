@@ -1,0 +1,33 @@
+,,1,2,3,4,5,6,7,8,9,10,11,12
+A,Content,Std,NTC,Std,NTC,Std,NTC,Std,NTC,Std,NTC,Std,NTC
+A,Sample,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0
+A,Peak 1,82,None,82,None,82,None,82.5,None,81.5,None,81.5,None
+A,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
+B,Content,Std,NTC,Std,NTC,Std,NTC,Std,NTC,Std,NTC,NTC,NTC
+B,Sample,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,,,
+B,Peak 1,81,None,81,None,80.5,None,None,None,84,None,None,None
+B,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
+C,Content,Std,NTC,Std,NTC,Std,NTC,Std,NTC,Std,NTC,Std,NTC
+C,Sample,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0
+C,Peak 1,81.5,None,82,None,82,None,82.5,None,81.5,None,81.5,None
+C,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
+D,Content,Std,NTC,Std,NTC,Std,NTC,Std,NTC,Std,NTC,NTC,NTC
+D,Sample,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,,Col-0
+D,Peak 1,81,None,80.5,None,80.5,None,None,None,84,None,None,None
+D,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
+E,Content,Std,NTC,Std,NTC,Std,NTC,Std,NTC,Std,NTC,Std,NTC
+E,Sample,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0
+E,Peak 1,81.5,None,82,None,82,None,82.5,None,81.5,None,81.5,None
+E,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
+F,Content,Std,NTC,Std,NTC,Std,NTC,Std,NTC,Std,NTC,NTC,NTC
+F,Sample,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,,,
+F,Peak 1,81,None,80.5,None,80.5,None,79,None,84,None,None,None
+F,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
+G,Content,Std,NTC,Std,NTC,Std,NTC,Std,NTC,Std,NTC,Std,NTC
+G,Sample,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0
+G,Peak 1,81.5,None,82,None,82,None,82,None,81.5,None,81,None
+G,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
+H,Content,Std,NTC,Std,NTC,Std,NTC,Std,NTC,Std,NTC,NTC,NTC
+H,Sample,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,,,
+H,Peak 1,None,None,80.5,None,80.5,None,79,None,84,80.5,None,None
+H,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
