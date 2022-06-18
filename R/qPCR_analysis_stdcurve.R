@@ -1,3 +1,22 @@
+#' Real-time qPCR standard curve and primer efficiency calculation.
+#'
+#' @description
+#' Parses primary qPCR data (Cq values) and calculates primer efficiencies based on standard curve serial dilutions.
+#' Compatible with Cq data exported from Bio-Rad CFX Connect real-time PCR machine.
+#'
+#' @details
+#' Standard curve slopes and resulting efficiencies are calculated by fitting the Cq values (y) against the log(starting quantity) (x)
+#' on a linear model (function `lm(y~x)`).
+#'
+#' @param d `data.frame`, Cq value data exported from Bio-Rad CFX Connect real-time PCR machine.
+#' @param graph Logical. If `TRUE`, also draws and returns the standard curves on a scatter plot with trend lines. Defaults to `FALSE`.
+#'
+#' @return A list with 3 elements:
+#' -  `$data`, a `data.table` with the Cq values against log(Starting quantity) for each target gene.
+#' -  `$efficiencies`, a `data.table` with the calculated efficiencies for each target gene.
+#' -  `$graph`, the scatter plot with the drawn standard curves if requested.
+#' Points are technical means, error bars are technical standard deviations.
+#'
 #' @import data.table
 #' @import ggplot2
 #' @import ggthemes
@@ -5,17 +24,6 @@
 #' @export
 
 qPCR_analysis_std_curve <- function(d,graph=FALSE) {
-  # FUNCTION 2: Standard curve data
-
-  # Input: the qPCR raw data
-
-  # Returns a list containing 3 items:
-  # $dat: Data frame with the technical means and standard deviations for each target gene and each dilution
-  # $efficiencies: Data frame with the calculated curve slopes and primer pair efficiencies for each target gene
-  # Slopes and resulting efficiencies are calculated with the formula lm(y~x), which makes a linear model of y based on x
-  # $graph: A scatter plot of Ct values VS log(starting quantity) with the standard curve for each target gene.
-  # Dots are technical means, error bars are technical standard deviations
-  # Trend lines are drawn according to linear regressions (Ct values ∼ log(starting quantity)), using the plotting function scatter.trend.plot
 
   d <- copy(d)
   setDT(d)

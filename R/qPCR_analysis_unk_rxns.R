@@ -1,12 +1,18 @@
+#' Real-time qPCR unknown sample reaction processing.
+#'
+#' @description
+#' Parses primary qPCR data (Cq values) and calculates technical means for each sample, biological replicate and gene.
+#' Compatible with Cq data exported from Bio-Rad CFX Connect real-time PCR machine.
+#'
+#' @param d `data.frame`, Cq value data exported from Bio-Rad CFX Connect real-time PCR machine.
+#'
+#' @return A `data.table` with Cq values for each sample, biological replicate and gene.
+#'
 #' @import data.table
 #'
 #' @export
 
 qPCR_analysis_unk_rxns <- function(d) {
-  # FUNCTION 3: Unknown sample reactions
-
-  # Input: the qPCR raw data
-  # Returns a data frame with the technical means and standard deviations of each sample, biological replicate and target gene
 
   d <- copy(d)
   setDT(d)

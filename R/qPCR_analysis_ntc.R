@@ -1,12 +1,18 @@
+#' Real-time qPCR non-template control processing.
+#'
+#' @description
+#' Parses primary qPCR data (Cq values) and summarizes results for non-template controls.
+#' Compatible with Cq data exported from Bio-Rad CFX Connect real-time PCR machine.
+#'
+#' @param d `data.frame`, Cq value data exported from Bio-Rad CFX Connect real-time PCR machine.
+#'
+#' @return A `data.table` with primer targets and Cq values, each row being a non-template control reaction.
+#'
 #' @import data.table
 #'
 #' @export
 
 qPCR_analysis_ntc <- function(d) {
-  # FUNCTION 1: Check non-template controls
-
-  # Input: the qPCR raw data
-  # Returns a data frame with the Ct values of each non-template control reaction
 
   d <- copy(d)
   setDT(d)

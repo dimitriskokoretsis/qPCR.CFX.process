@@ -1,26 +1,40 @@
+#' Real-time qPCR relative quantity calculation.
+#'
+#' @description
+#' Calculates the relative quantity of target genes between one control sample and one or more test samples.
+#' Based on one or multiple reference genes.
+#'
+#' @details
+#' Uses the Pfaffl calculation method, accounting for different primer efficiencies
+#' (Pfaffl, M.W. (2001), Nucleic Acids Research, 29 (9), e45. <https://doi.org/10.1093/nar/29.9.e45>).
+#' The common-base calculation method described by Ganger et al. 2017 is followed, which gives identical results to the Pfaffl method
+#' (Ganger, M.T., Dietz, G.D. & Ewing, S.J. (2017), BMC Bioinformatics, 18. <https://doi.org/10.1186/s12859-017-1949-5>).
+#' If efficiencies are not entered (`NULL`), it defaults to the delta-delta-Ct method
+#' (Livak, K.J. & Schmittgen, T.D. (2001), Methods, 25 (4), 402–408. <https://doi.org/10.1006/meth.2001.1262>).
+#'
+#' @param unkdata A `data.frame` containing the technical replicate means of the unknown reactions.
+#' Result from `qPCR_analysis_unk_rxns` function.
+#' @param refgene Character vector with the name(s) of the reference gene(s).
+#' @param efficiencies A `data.frame` containing the efficiencies of each primer pair.
+#' The `$efficiencies` `data.table` resulting from the `qPCR_analysis_stdcurve` function.
+#' Defaults to `NULL`, which assumes all primer pairs' efficiency being equal to 100%.
+#' @param control Character. The name of the control sample, against which all other samples will be compared.
+#' Defaults to the 1st sample alphabetically.
+#'
+#' @return A `data.table` with the calculated expression of each sample, biological replicate and target gene.
+#'
 #' @import data.table
 #'
 #' @export
 
-qPCR_analysis_expression <- function(unkdata,refgene,efficiencies=NULL,control=levels(unkdata$Sample)[1]) {
-  #  FUNCTION 4: Calculate expression and store in new dataframe
-
-  # Calculate expression according to the Pfaffl method and using the Ganger et al. 2017 variation.
-  # Takes into account different primer pair efficiencies and potentially multiple reference genes
-
-  # Input:
-  # unkdata: the data frame resulting from the qPCR.unk.rxn.analysis function.
-  #   Contains the technical means and standard deviations of Ct values of all biological replicates and samples and for each gene.
-  # refgene: a character vector containing the names of the reference genes. Can have one or many elements.
-  # efficiencies: the data frame resulting from the standard.curve.analysis function ($efficiencies). Contains the primer efficiency data.
-  #   Will use efficiency of 100% for all primer pairs by default.
-  # control: an one-element character vector with the name of the control sample
-
-  # Returned data:
-  # Data frame containing the expression
+qPCR_analysis_expression <- function(unkdata,refgene,efficiencies=NULL,control=NULL) {
 
   unkdata <- copy(unkdata)
   setDT(unkdata)
+
+  if(is.null(control)) {
+    control <- levels(unkdata$Sample)[1]
+  }
 
   if(is.null(efficiencies)) {
     efficiencies<-data.table(target=levels(unkdata$Target),efficiency=1L)
