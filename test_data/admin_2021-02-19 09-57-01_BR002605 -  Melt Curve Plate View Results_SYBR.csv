@@ -1,0 +1,33 @@
+,,1,2,3,4,5,6,7,8,9,10,11,12
+A,Content,Std,Std,Std,Std,Std,Std,Std,Std,Std,Std,Std,Std
+A,Sample,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0
+A,Peak 1,81.5,81.5,81.5,81.5,82,82,82,82.5,81.5,81.5,81.5,81
+A,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
+B,Content,Std,Std,Std,Std,Std,Std,Std,Std,Std,NTC,NTC,NTC
+B,Sample,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,,,
+B,Peak 1,81,81,80.5,80.5,80.5,80.5,79.5,79.5,84,81,None,None
+B,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
+C,Content,Std,Std,Std,Std,Std,Std,Std,Std,Std,Std,Std,Std
+C,Sample,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0
+C,Peak 1,81.5,81.5,81.5,81.5,82,82,82.5,82.5,81.5,81.5,81.5,81
+C,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
+D,Content,Std,Std,Std,Std,Std,Std,Std,Std,Std,Std,NTC,NTC
+D,Sample,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,,
+D,Peak 1,81,81,80.5,80.5,81,81,79.5,79,84,84,None,None
+D,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
+E,Content,Std,Std,Std,Std,Std,Std,Std,Std,Std,Std,Std,Std
+E,Sample,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0
+E,Peak 1,81.5,81.5,82,81.5,82,82,82.5,82,81.5,81.5,81.5,81.5
+E,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
+F,Content,Std,Std,Std,Std,Std,Std,Std,Std,Std,NTC,NTC,NTC
+F,Sample,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,,,
+F,Peak 1,81,81,81,80.5,80.5,80.5,79.5,79.5,84,None,81,None
+F,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
+G,Content,Std,Std,Std,Std,Std,Std,Std,Std,Std,Std,Std,Std
+G,Sample,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0
+G,Peak 1,81.5,81.5,None,None,81.5,81.5,82,82,81,81.5,81,81
+G,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
+H,Content,Std,Std,Std,Std,Std,Std,Std,Std,Std,NTC,NTC,NTC
+H,Sample,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,Col-0,,,
+H,Peak 1,None,81,80.5,81,80.5,80.5,79,79.5,84,80.5,None,None
+H,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None

@@ -1,0 +1,33 @@
+,,1,2,3,4,5,6,7,8,9,10,11,12
+A,Content,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn
+A,Sample,TuMV (1),TuMV (1),TuMV (1),TuMV (2),TuMV (2),TuMV (2),TuMV (3),TuMV (3),TuMV (3),TuMV (1),TuMV (1),TuMV (1)
+A,Peak 1,81.5,81.5,81.5,81.5,82,81.5,81.5,81.5,82,81,80.5,81
+A,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
+B,Content,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn
+B,Sample,TuMV (1),TuMV (1),TuMV (1),TuMV (2),TuMV (2),TuMV (2),TuMV (3),TuMV (3),TuMV (3),TuMV (2),TuMV (2),TuMV (2)
+B,Peak 1,81.5,81.5,81.5,82,81.5,81.5,81.5,81.5,81.5,80.5,81,81
+B,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
+C,Content,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn
+C,Sample,TuMV (1),TuMV (1),TuMV (1),TuMV (2),TuMV (2),TuMV (2),TuMV (3),TuMV (3),TuMV (3),TuMV (3),TuMV (3),TuMV (3)
+C,Peak 1,81.5,82,81.5,82,82,82,82,82,81.5,80.5,80.5,80.5
+C,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
+D,Content,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn
+D,Sample,TuMV (1),TuMV (1),TuMV (1),TuMV (2),TuMV (2),TuMV (2),TuMV (3),TuMV (3),TuMV (3),TuMV (1),TuMV (1),TuMV (1)
+D,Peak 1,82,82.5,82,82,82,82,82,82,82,79.5,None,79.5
+D,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
+E,Content,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn
+E,Sample,TuMV (1),TuMV (1),TuMV (1),TuMV (2),TuMV (2),TuMV (2),TuMV (3),TuMV (3),TuMV (3),TuMV (2),TuMV (2),TuMV (2)
+E,Peak 1,81,81.5,81.5,81.5,81.5,81.5,81.5,81.5,81.5,79.5,None,None
+E,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
+F,Content,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn
+F,Sample,TuMV (1),TuMV (1),TuMV (1),TuMV (2),TuMV (2),TuMV (2),TuMV (3),TuMV (3),TuMV (3),TuMV (3),TuMV (3),TuMV (3)
+F,Peak 1,81,81,81,81,81,81,81,81,81,79,79,None
+F,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
+G,Content,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn
+G,Sample,TuMV (1),TuMV (1),TuMV (1),TuMV (2),TuMV (2),TuMV (2),TuMV (3),TuMV (3),TuMV (3),TuMV (1),TuMV (2),TuMV (3)
+G,Peak 1,81,81,81,81,81,81,81,81,81,84,84,84
+G,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
+H,Content,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn
+H,Sample,TuMV (1),TuMV (1),TuMV (1),TuMV (2),TuMV (2),TuMV (2),TuMV (3),TuMV (3),TuMV (3),TuMV (1),TuMV (2),TuMV (3)
+H,Peak 1,81,80.5,81,80.5,81,80.5,80.5,80.5,80.5,84,84,84
+H,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None

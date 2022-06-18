@@ -1,0 +1,33 @@
+,,1,2,3,4,5,6,7,8,9,10,11,12
+A,Content,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn
+A,Sample,Uninfected (1),Uninfected (1),Uninfected (1),Uninfected (2),Uninfected (2),Uninfected (2),Uninfected (3),Uninfected (3),Uninfected (3),Uninfected (1),Uninfected (1),Uninfected (1)
+A,Peak 1,81.5,81.5,81.5,81.5,81.5,81.5,81.5,81.5,81.5,80.5,80.5,80.5
+A,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
+B,Content,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn
+B,Sample,Uninfected (1),Uninfected (1),Uninfected (1),Uninfected (2),Uninfected (2),Uninfected (2),Uninfected (3),Uninfected (3),Uninfected (3),Uninfected (2),Uninfected (2),Uninfected (2)
+B,Peak 1,81.5,81.5,81.5,81.5,81.5,81.5,81.5,81.5,81.5,80.5,80.5,80.5
+B,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
+C,Content,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn
+C,Sample,Uninfected (1),Uninfected (1),Uninfected (1),Uninfected (2),Uninfected (2),Uninfected (2),Uninfected (3),Uninfected (3),Uninfected (3),Uninfected (3),Uninfected (3),Uninfected (3)
+C,Peak 1,82,81.5,81.5,81.5,82,82,81.5,81.5,81.5,80.5,80.5,80.5
+C,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
+D,Content,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn
+D,Sample,Uninfected (1),Uninfected (1),Uninfected (1),Uninfected (2),Uninfected (2),Uninfected (2),Uninfected (3),Uninfected (3),Uninfected (3),Uninfected (1),Uninfected (1),Uninfected (1)
+D,Peak 1,82,82,82,82,82,82,82,82,82,79,79,79
+D,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
+E,Content,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn
+E,Sample,Uninfected (1),Uninfected (1),Uninfected (1),Uninfected (2),Uninfected (2),Uninfected (2),Uninfected (3),Uninfected (3),Uninfected (3),Uninfected (2),Uninfected (2),Uninfected (2)
+E,Peak 1,81,81,81,81,81,81,81,81,81,79,79.5,79.5
+E,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
+F,Content,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn
+F,Sample,Uninfected (1),Uninfected (1),Uninfected (1),Uninfected (2),Uninfected (2),Uninfected (2),Uninfected (3),Uninfected (3),Uninfected (3),Uninfected (3),Uninfected (3),Uninfected (3)
+F,Peak 1,81,81,81,81.5,81,81,81,81,81,79,79,79
+F,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
+G,Content,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn
+G,Sample,Uninfected (1),Uninfected (1),Uninfected (1),Uninfected (2),Uninfected (2),Uninfected (2),Uninfected (3),Uninfected (3),Uninfected (3),Uninfected (1),Uninfected (2),Uninfected (3)
+G,Peak 1,81,81,81,81,81,81,81,81,81,None,None,None
+G,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
+H,Content,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn,Unkn
+H,Sample,Uninfected (1),Uninfected (1),Uninfected (1),Uninfected (2),Uninfected (2),Uninfected (2),Uninfected (3),Uninfected (3),Uninfected (3),Uninfected (1),Uninfected (2),Uninfected (3)
+H,Peak 1,81,80.5,81,81,81,80.5,80.5,81,80.5,None,None,None
+H,Peak 2,None,None,None,None,None,None,None,None,None,None,None,None
