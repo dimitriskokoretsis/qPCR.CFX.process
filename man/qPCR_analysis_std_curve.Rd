@@ -14,9 +14,9 @@ qPCR_analysis_std_curve(d, graph = FALSE)
 \value{
 A list with 3 elements:
 \itemize{
-\item \verb{$data}, a \code{data.table} with the Cq values against log(Starting quantity) for each target gene.
-\item \verb{$efficiencies}, a \code{data.table} with the calculated efficiencies for each target gene.
-\item \verb{$graph}, the scatter plot with the drawn standard curves if requested.
+\item \verb{$data}: A \code{data.table} with the Cq values against log(Starting quantity) for each target gene.
+\item \verb{$efficiencies}: A \code{data.table} with the calculated efficiencies for each target gene.
+\item \verb{$graph}: The scatter plot with the drawn standard curves, if requested.
 Points are technical means, error bars are technical standard deviations.
 }
 }
