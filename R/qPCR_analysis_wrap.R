@@ -10,6 +10,8 @@
 #' Defaults to the 1st sample alphabetically.
 #' @param std.curve Logical. Determines whether or not to calculate efficiencies from standard curves or not.
 #' If `FALSE`, standard curve reactions will be ignored and efficiencies of 100% will be assumed. Defaults to `TRUE`.
+#' @param std.curve.plot Logical. Determines whether or not to plot standard curve data in a scatter plot with trend lines.
+#' Defaults to `TRUE`.
 #'
 #' @return A list of 4 elements:
 #' -  `$NTC`: Results from `qPCR_analysis_ntc` function.
@@ -19,14 +21,14 @@
 #'
 #' @export
 
-qPCR_analysis_wrap <- function(d,refgene,control=NULL,std.curve=TRUE){
+qPCR_analysis_wrap <- function(d,refgene,control=NULL,std.curve=TRUE,std.curve.plot=TRUE){
 
   NTC.results <- d |> qPCR_analysis_ntc()
   unk.rxn.results <- d |> qPCR_analysis_unk_rxns()
 
   #If there are standard curve reactions, make calculations from them. Otherwise, assume 100% efficiency for all primer pairs
   if(std.curve==TRUE) {
-    std.curve.results <- d |> qPCR_analysis_std_curve()
+    std.curve.results <- d |> qPCR_analysis_std_curve(plot=std.curve.plot)
     expression.results <- unk.rxn.results |>
       qPCR_analysis_expression(refgene=refgene,
                                efficiencies=std.curve.results$efficiencies,

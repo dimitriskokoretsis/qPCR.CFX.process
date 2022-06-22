@@ -4,7 +4,13 @@
 \alias{qPCR_analysis_wrap}
 \title{Real-time qPCR result processing.}
 \usage{
-qPCR_analysis_wrap(d, refgene, control = NULL, std.curve = TRUE)
+qPCR_analysis_wrap(
+  d,
+  refgene,
+  control = NULL,
+  std.curve = TRUE,
+  std.curve.plot = TRUE
+)
 }
 \arguments{
 \item{d}{\code{data.frame}, Cq value data exported from Bio-Rad CFX Connect real-time PCR machine.}
@@ -16,6 +22,9 @@ Defaults to the 1st sample alphabetically.}
 
 \item{std.curve}{Logical. Determines whether or not to calculate efficiencies from standard curves or not.
 If \code{FALSE}, standard curve reactions will be ignored and efficiencies of 100\% will be assumed. Defaults to \code{TRUE}.}
+
+\item{std.curve.plot}{Logical. Determines whether or not to plot standard curve data in a scatter plot with trend lines.
+Defaults to \code{TRUE}.}
 }
 \value{
 A list of 4 elements:

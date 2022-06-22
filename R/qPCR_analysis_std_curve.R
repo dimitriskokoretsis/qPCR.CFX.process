@@ -9,7 +9,7 @@
 #' on a linear model (function `lm(y~x)`).
 #'
 #' @param d `data.frame`, Cq value data exported from Bio-Rad CFX Connect real-time PCR machine.
-#' @param graph Logical. If `TRUE`, also draws and returns the standard curves on a scatter plot with trend lines. Defaults to `FALSE`.
+#' @param plot Logical. If `TRUE`, also draws and returns the standard curves on a scatter plot with trend lines. Defaults to `FALSE`.
 #'
 #' @return A list with 3 elements:
 #' -  `$data`: A `data.table` with the Cq values against log(Starting quantity) for each target gene.
@@ -23,7 +23,7 @@
 #'
 #' @export
 
-qPCR_analysis_std_curve <- function(d,graph=FALSE) {
+qPCR_analysis_std_curve <- function(d,plot=FALSE) {
 
   d <- copy(d)
   setDT(d)
@@ -68,11 +68,11 @@ qPCR_analysis_std_curve <- function(d,graph=FALSE) {
 
   #-------------------------------------------------------- Draw standard curves --------------------------------------------
 
-  if(graph==TRUE) {
+  if(plot==TRUE) {
     # Plot standard curves
-    plot <- ggplot(data=d,mapping=aes(x=Log.Starting.Quantity,y=Cq.average,color=Target)) +
+    std.plot <- ggplot(data=d,mapping=aes(x=Log.Starting.Quantity,y=Cq.average,color=Target)) +
       theme_classic() +
-      xlab(paste0("Log starting quantity (",dat[1,Sample],")")) +
+      xlab(paste0("Log starting quantity (",d[1,Sample],")")) +
       ylab("Threshold cycle") +
       geom_smooth(se=FALSE,method="lm",size=1) +
       geom_point(size=1.5) +
@@ -80,8 +80,8 @@ qPCR_analysis_std_curve <- function(d,graph=FALSE) {
                     colour="black",width=0) +
       scale_color_discrete("Target")
   } else {
-    plot <- NULL
+    std.plot <- NULL
   }
 
-  return(list(data=d,efficiencies=efficiencies,graph=plot))
+  return(list(data=d,efficiencies=efficiencies,plot=std.plot))
 }
