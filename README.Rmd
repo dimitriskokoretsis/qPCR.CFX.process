@@ -43,3 +43,36 @@ Cq.data
 library(qpcr.CFX.process)
 qPCR.analysis <- qPCR_analysis_wrap(Cq.data,refgene="reference.gene",control="control.condition")
 ```
+
+```{r}
+str(qPCR.analysis,max.level=1)
+```
+
+```{r}
+qPCR.analysis$NTC
+```
+
+```{r}
+qPCR.analysis$std.curve
+```
+
+```{r}
+qPCR.analysis$unk.rxn
+```
+
+```{r}
+qPCR.analysis$expression
+```
+
+```{r,eval=FALSE}
+devtools::install_github("dimitriskokoretsis/datavis")
+```
+
+```{r}
+library(datavis)
+expression.plot <- qPCR.analysis$expression |>
+  bar_point_plot(x="Target",y="fold.change",color.group="Sample",mean.type="geometric")
+expression.plot
+```
+
+
