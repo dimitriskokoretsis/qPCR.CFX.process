@@ -35,7 +35,6 @@ This is a basic example which shows you how to solve a common problem:
 
 ```{r}
 Cq.data <- data.table::fread("test_data/PCR_Cq_data.csv",check.names=TRUE)
-knitr::kable(Cq.data)
 ```
 
 
@@ -53,25 +52,34 @@ qPCR.analysis$NTC
 ```
 
 ```{r}
-qPCR.analysis$std.curve
+str(qPCR.analysis$std.curve,max.level=1)
 ```
 
 ```{r}
-qPCR.analysis$unk.rxn
+knitr::kable(qPCR.analysis$std.curve$data)
+knitr::kable(qPCR.analysis$std.curve$efficiencies)
+qPCR.analysis$std.curve$plot
+```
+
+
+```{r}
+knitr::kable(qPCR.analysis$unk.rxn)
 ```
 
 ```{r}
-qPCR.analysis$expression
+knitr::kable(qPCR.analysis$expression)
 ```
 
-```{r,eval=FALSE}
-devtools::install_github("dimitriskokoretsis/datavis")
-```
+
 
 ```{r}
 library(datavis)
 expression.plot <- qPCR.analysis$expression |>
-  bar_point_plot(x="Target",y="fold.change",color.group="Sample",mean.type="geometric")
+  bar_point_plot(x="Target",
+                 y="fold.change",
+                 color.group="Sample",
+                 mean.type="geometric")
+
 expression.plot
 ```
 
