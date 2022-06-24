@@ -34,7 +34,7 @@ devtools::install_github("dimitriskokoretsis/qpcr.CFX.process")
 This is a basic example which shows you how to solve a common problem:
 
 ```{r}
-Cq.data <- data.table::fread("test_data/PCR_Cq_data.csv",check.names=TRUE)
+Cq.data <- data.table::fread("test_data/username_date_time_model - Quantification Cq Results_0.csv",check.names=TRUE)
 ```
 
 
