@@ -9,7 +9,7 @@
 #' on a linear model (function `lm(y~x)`).
 #'
 #' @param d `data.frame`, Cq value data exported from Bio-Rad CFX Connect real-time PCR machine.
-#' @param plot Logical. If `TRUE`, also draws and returns the standard curves on a scatter plot with trend lines. Defaults to `FALSE`.
+#' @param plot Logical. If `TRUE`, also draws and returns the standard curves on a scatter plot with trend lines. Defaults to `TRUE`.
 #'
 #' @return A list of 3 elements:
 #' -  `$data`: A `data.table` with the Cq values against log(Starting quantity) for each target gene.

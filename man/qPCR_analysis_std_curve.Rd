@@ -4,12 +4,12 @@
 \alias{qPCR_analysis_std_curve}
 \title{Real-time qPCR standard curve and primer efficiency calculation.}
 \usage{
-qPCR_analysis_std_curve(d, plot = FALSE)
+qPCR_analysis_std_curve(d, plot = TRUE)
 }
 \arguments{
 \item{d}{\code{data.frame}, Cq value data exported from Bio-Rad CFX Connect real-time PCR machine.}
 
-\item{plot}{Logical. If \code{TRUE}, also draws and returns the standard curves on a scatter plot with trend lines. Defaults to \code{FALSE}.}
+\item{plot}{Logical. If \code{TRUE}, also draws and returns the standard curves on a scatter plot with trend lines. Defaults to \code{TRUE}.}
 }
 \value{
 A list of 3 elements:
