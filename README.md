@@ -16,7 +16,7 @@ is relative quantity to a designated control sample.
 
 ## Installation
 
-You can install the development version of qpcr.CFX.process from
+You can install the development version of `qpcr.CFX.process` from
 [GitHub](https://github.com/) by using the `devtools` package. If not
 installed in your system, install `devtools` with the following line:
 
