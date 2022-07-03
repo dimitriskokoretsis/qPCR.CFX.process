@@ -27,10 +27,10 @@ Calculates the relative quantity of target genes between one control sample and 
 Based on one or multiple reference genes.
 }
 \details{
-Uses the Pfaffl calculation method, accounting for different primer efficiencies
-(Pfaffl, M.W. (2001), Nucleic Acids Research, 29 (9), e45. \url{https://doi.org/10.1093/nar/29.9.e45}).
-The common-base calculation method described by Ganger et al. 2017 is followed, which gives identical results to the Pfaffl method
-(Ganger, M.T., Dietz, G.D. & Ewing, S.J. (2017), BMC Bioinformatics, 18. \url{https://doi.org/10.1186/s12859-017-1949-5}).
+Applies the Pfaffl calculation method, accounting for different primer efficiencies
+(\href{https://doi.org/10.1093/nar/29.9.e45}{Pfaffl, 2001}).
+The common-base calculation method described by \href{https://doi.org/10.1186/s12859-017-1949-5}{Ganger et al. 2017} is followed,
+which gives identical results to the Pfaffl method.
 If efficiencies are not entered (\code{NULL}), it defaults to the delta-delta-Ct method
-(Livak, K.J. & Schmittgen, T.D. (2001), Methods, 25 (4), 402–408. \url{https://doi.org/10.1006/meth.2001.1262}).
+(\href{https://doi.org/10.1006/meth.2001.1262}{Livak & Schmittgen, 2001}).
 }
