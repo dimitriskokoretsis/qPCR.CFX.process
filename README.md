@@ -14,10 +14,10 @@ target genes, and supports one or multiple reference genes.
 Its input is calculated quantification cycle (Cq) values and its output
 is relative quantity to a designated control sample. If standard curve
 reactions are included, primer efficiencies are calculated and the
-method established by [Pfaffl (2001)](#ref1) is used to calculate
-relative quantities, using the *common base* calculation approach,
+method established by [Pfaffl (2001)](#ref1) is applied to calculate
+relative quantity, using the *common base* calculation approach,
 described by [Ganger et al. (2017)](#ref2). Otherwise, the [Livak and
-Schmittgen (2001)](#ref3) method is used, assuming all primer
+Schmittgen (2001)](#ref3) method is applied, assuming all primer
 efficiencies to be equal to 100%.
 
 ## Installation
