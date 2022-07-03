@@ -258,7 +258,8 @@ Therefore, the qPCR.analysis list has 4 elements:
 -   `NTC`: A `data.table` with primer targets and Cq values, each row
     being a non-template control reaction.
 
--   `std.curve`: A list of 3 elements. More on that below.
+-   `std.curve`: A list of 3 elements. More on that in the [Standard
+    curve calculations](#standard-curve-calculations) section.
 
 -   `unk.rxn`: A `data.table` with Cq values for each sample, biological
     replicate and gene.
