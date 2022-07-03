@@ -272,12 +272,14 @@ To see the `NTC` `data.table` of the `qPCR.analysis` list, call it as
 follows:
 
 ``` r
-qPCR.analysis$NTC
-#>                Target      Cq
-#> 1: gene.of.interest.1 34.9817
-#> 2: gene.of.interest.2     NaN
-#> 3:     reference.gene     NaN
+knitr::kable(qPCR.analysis$NTC)
 ```
+
+| Target             |      Cq |
+|:-------------------|--------:|
+| gene.of.interest.1 | 34.9817 |
+| gene.of.interest.2 |     NaN |
+| reference.gene     |     NaN |
 
 As we see, the non-template control reaction for gene.of.interest.1 has
 a Cq value of 34.9817 - while the other two non-template control

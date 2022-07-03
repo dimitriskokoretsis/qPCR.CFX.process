@@ -126,7 +126,7 @@ Therefore, the qPCR.analysis list has 4 elements:
 To see the `NTC` `data.table` of the `qPCR.analysis` list, call it as follows:
 
 ```{r}
-qPCR.analysis$NTC
+knitr::kable(qPCR.analysis$NTC)
 ```
 
 As we see, the non-template control reaction for gene.of.interest.1 has a Cq value of 34.9817 - while the other two non-template control reactions did not yield a Cq value (`NaN` - not a number).
