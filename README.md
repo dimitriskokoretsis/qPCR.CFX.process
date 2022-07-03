@@ -372,6 +372,9 @@ error bars show their standard deviation.
 
 #### Unknown reactions
 
+The `unk.rxn` `data.table` gathers and summarizes the unknown sample
+reactions for each target gene, sample, and biological replicate.
+
 ``` r
 knitr::kable(qPCR.analysis$unk.rxn)
 ```
@@ -397,7 +400,21 @@ knitr::kable(qPCR.analysis$unk.rxn)
 | test.condition    | 2        | reference.gene     |     25.89713 |  0.2034858 |
 | test.condition    | 3        | reference.gene     |     25.80833 |  0.2916914 |
 
+-   `Sample`: Name of sample template
+
+-   `Biol.rep`: Biological replicate number
+
+-   `Target`: Name of target gene
+
+-   `Cq.tech.mean`: Arithmetic mean between technical replicates
+
+-   `Cq.tech.sd`: Standard deviation between technical replicates
+
 #### Calculated expression
+
+The `expression` `data.table` is the final result of the real-time qPCR
+data processing. Each row corresponds to a sample, biological replicate
+and gene of interest.
 
 ``` r
 knitr::kable(qPCR.analysis$expression)
@@ -418,16 +435,44 @@ knitr::kable(qPCR.analysis$expression)
 | test.condition    | 2        | gene.of.interest.2 |     31.29003 |                    25.89713 |                          2.081375 |                  27.38716 |            27.38716 |               1.821933 |       27.08058 |   0.3065821 |           -3.054538 |        3.3611203 |  10.2753832 |
 | test.condition    | 3        | gene.of.interest.2 |     32.79633 |                    25.80833 |                          2.081375 |                  27.29326 |            27.29326 |               1.821933 |       28.38424 |  -1.0909790 |           -3.054538 |        1.9635592 |   3.9002299 |
 
+There are many fields in this table to depict calculation stages, but
+the most important ones are the following:
+
+-   `Sample`: Name of sample template
+
+-   `Target`: Name of gene of interest
+
+-   `fold.change`: Fold-change of quantity in relation to control sample
+
 ### Visualize expression results
 
+We can visualize the fold-change between the control and test conditions
+for each gene of interest.
+
+Any visualization tool may be used. The `bar_point_plot` function of my
+own
+<a href="https://github.com/dimitriskokoretsis/datavis" target="_blank">`datavis`</a>
+package is quite easy to use for this task. To install it in your
+system, follow the instructions in its page.
+
+Importantly, for fold-change of quantity, mean and variation parameters
+only make sense in the logarithmic scale. By setting the `mean.type`
+argument to “geometric”, the mean and standard deviation are calculated
+on log-transformed fold-change and then exponentiated back to their
+original scale. These are the *geometric* mean and standard deviation.
+
 ``` r
+# Load datavis package
 library(datavis)
+
+# Create bar plot
 expression.plot <- qPCR.analysis$expression |>
   bar_point_plot(x="Target",
                  y="fold.change",
                  color.group="Sample",
                  mean.type="geometric")
 
+# Show bar plot
 expression.plot
 ```
 
