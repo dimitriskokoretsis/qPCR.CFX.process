@@ -76,8 +76,8 @@ To import a CSV file, use the `fread` function of the `data.table`
 package. This will create a `data.table`, which is similar to a standard
 R `data.frame`. The differences between the two are beyond the scope of
 this guide, but the curious reader can find more information
-<a href="https://rdatatable.gitlab.io/data.table/" target="_blank">here</a>.
-The `qpcr.CFX.process` package works well with either of the two.
+[here](https://rdatatable.gitlab.io/data.table/). The `qpcr.CFX.process`
+package works well with either of the two.
 
 ``` r
 # Import data from file
@@ -450,10 +450,9 @@ We can visualize the fold-change between the control and test conditions
 for each gene of interest.
 
 Any visualization tool may be used. The `bar_point_plot` function of my
-own
-<a href="https://github.com/dimitriskokoretsis/datavis" target="_blank">`datavis`</a>
-package is quite easy to use for this task. To install it in your
-system, follow the instructions in its page.
+own [`datavis`](https://github.com/dimitriskokoretsis/datavis) package
+is quite easy to use for this task. To install it in your system, follow
+the instructions in its page.
 
 Importantly, for fold-change of quantity, mean and variation parameters
 only make sense in the logarithmic scale. By setting the `mean.type`

@@ -55,7 +55,7 @@ We will demonstrate the functionality of `qpcr.CFX.process` with an example real
 
 The Bio-Rad CFX software exports a number of different comma-separated files (.csv extension) per run. `qpcr.CFX.process` handles the file whose name ends in "Quantification Cq Results_0.csv". This file contains information on type of reaction, sample, amplification target, and calculated quantification cycle (Cq) per well.
 
-To import a CSV file, use the `fread` function of the `data.table` package. This will create a `data.table`, which is similar to a standard R `data.frame`. The differences between the two are beyond the scope of this guide, but the curious reader can find more information <a href="https://rdatatable.gitlab.io/data.table/" target="_blank">here</a>. The `qpcr.CFX.process` package works well with either of the two.
+To import a CSV file, use the `fread` function of the `data.table` package. This will create a `data.table`, which is similar to a standard R `data.frame`. The differences between the two are beyond the scope of this guide, but the curious reader can find more information [here](https://rdatatable.gitlab.io/data.table/). The `qpcr.CFX.process` package works well with either of the two.
 
 ```{r}
 # Import data from file
@@ -203,7 +203,7 @@ There are many fields in this table to depict calculation stages, but the most i
 
 We can visualize the fold-change between the control and test conditions for each gene of interest.
 
-Any visualization tool may be used. The `bar_point_plot` function of my own <a href="https://github.com/dimitriskokoretsis/datavis" target="_blank">`datavis`</a> package is quite easy to use for this task. To install it in your system, follow the instructions in its page.
+Any visualization tool may be used. The `bar_point_plot` function of my own [`datavis`](https://github.com/dimitriskokoretsis/datavis) package is quite easy to use for this task. To install it in your system, follow the instructions in its page.
 
 Importantly, for fold-change of quantity, mean and variation parameters only make sense in the logarithmic scale. By setting the `mean.type` argument to "geometric", the mean and standard deviation are calculated on log-transformed fold-change and then exponentiated back to their original scale. These are the *geometric* mean and standard deviation.
 
