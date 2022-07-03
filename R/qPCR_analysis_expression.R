@@ -37,13 +37,13 @@ qPCR_analysis_expression <- function(unkdata,refgene,efficiencies=NULL,control=N
   }
 
   if(is.null(efficiencies)) {
-    efficiencies<-data.table(target=levels(unkdata$Target),efficiency=1L)
-    efficiencies[,amplification.base:=
-                   efficiency+1]
+    efficiencies <- data.table(Target=levels(unkdata$Target),amplification.base=NA)
   }
 
-  unkdata[,Cq.tech.sd:=
-            NULL]
+  efficiencies[is.na(amplification.base),
+               warning(paste("Primer efficiency for",Target,"is not provided, so 100% efficiency is assumed."))]
+
+  unkdata[,Cq.tech.sd := NULL]
 
   for(refname in refgene) {
 
@@ -58,6 +58,9 @@ qPCR_analysis_expression <- function(unkdata,refgene,efficiencies=NULL,control=N
     # Enter the corresponding amplification base
     unkdata[,paste0(refname,".amplification.base"):=
               efficiencies[Target==refname,amplification.base]]
+
+    unkdata[is.na(paste0(refname,"amplification.base")),
+            paste0(refname,".amplification.base"):=2L]
 
     # Calculate weighed Cq for the corresponding reference gene
     unkdata[,paste0(refname,".Cq.weighed"):=
@@ -76,6 +79,8 @@ qPCR_analysis_expression <- function(unkdata,refgene,efficiencies=NULL,control=N
   unkdata[efficiencies,
           GOI.amplification.base:=amplification.base,
           on="Target"]
+
+  unkdata[is.na(GOI.amplification.base),GOI.amplification.base:=2L]
 
   # Calculate weighed Cq
   unkdata[,GOI.Cq.weighed:=

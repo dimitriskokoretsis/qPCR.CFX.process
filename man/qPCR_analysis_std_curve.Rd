@@ -12,11 +12,11 @@ qPCR_analysis_std_curve(d, plot = FALSE)
 \item{plot}{Logical. If \code{TRUE}, also draws and returns the standard curves on a scatter plot with trend lines. Defaults to \code{FALSE}.}
 }
 \value{
-A list with 3 elements:
+A list of 3 elements:
 \itemize{
 \item \verb{$data}: A \code{data.table} with the Cq values against log(Starting quantity) for each target gene.
 \item \verb{$efficiencies}: A \code{data.table} with the calculated efficiencies for each target gene.
-\item \verb{$graph}: The scatter plot with the drawn standard curves, if requested.
+\item \verb{$plot}: The scatter plot with the drawn standard curves, if requested.
 Points are technical means, error bars are technical standard deviations.
 }
 }

@@ -16,61 +16,168 @@ knitr::opts_chunk$set(
 # qpcr.CFX.process
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
-The goal of qpcr.CFX.process is to ...
+The goal of the R package `qpcr.CFX.process` is to facilitate the processing of real-time quantitative PCR results, exported by the Bio-Rad CFX Connect software. It is meant for relative quantification of target genes, and supports one or multiple reference genes.
+
+Its input is calculated quantification cycle (Cq) values and its output is relative quantity to a designated control sample.
 
 ## Installation
 
-You can install the development version of qpcr.CFX.process from [GitHub](https://github.com/) with:
+You can install the development version of qpcr.CFX.process from [GitHub](https://github.com/) by using the `devtools` package. If not installed in your system, install `devtools` with the following line:
 
-``` r
-# install.packages("devtools")
+```{r,eval=FALSE}
+install.packages("devtools")
+```
+
+When `devtools` is installed, execute the following line to install the `qpcr.CFX.process` package:
+
+```{r,eval=FALSE}
 devtools::install_github("dimitriskokoretsis/qpcr.CFX.process")
 ```
 
+## Setting up the real-time qPCR run
+
+The `qpcr.CFX.process` package makes certain assumptions about the structure of the data. Naming conventions in your setup should comply with these assumptions. The following rules should be followed:
+
+-   Primer efficiencies are calculated from standard curves, based on serial dilutions of the template. The starting quantity input by the user is in arbitrary units, but the dilution rate is important. For example, input starting quantities of 5, 1, 0.2 and 0.04 should give the same efficiency results as 10, 2, 0.4 and 0.08 (both describe a dilution rate of 5).
+
+-   The "sample" field is used both for the name of the reaction template and for its biological replicate number. The biological replicate number should be the last element and separated by space from the sample's name. For example: "template name X", where X is the biological replicate number. Sample name doesn't matter for calculations in standard curve reactions, as the same template is always used. Use a descriptive name for your convenience.
+
+-   Technical replicates should have the exact same names in all fields. They are essentially copies of the same reaction and their Cq values are averaged.
+
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+We will demonstrate the functionality of `qpcr.CFX.process` with an example real-time qPCR result. In this mock experiment, the expression of **2 genes of interest** is measured on a **test condition**, in relation to a **control condition**. There are **3 biological replicates** for each condition and **one reference gene** is used.
+
+### Import real-time qPCR results to the R environment
+
+The Bio-Rad CFX software exports a number of different comma-separated files (.csv extension) per run. `qpcr.CFX.process` handles the file whose name ends in "Quantification Cq Results_0.csv". This file contains information on type of reaction, sample, amplification target, and calculated quantification cycle (Cq) per well.
+
+To import a CSV file, use the `fread` function of the `data.table` package. This will create a `data.table`, which is similar to a standard R `data.frame`. The differences between the two are beyond the scope of this guide, but the curious reader can find more information <a href="https://rdatatable.gitlab.io/data.table/" target="_blank">here</a>. The `qpcr.CFX.process` package works well with either of the two.
 
 ```{r}
+# Import data from file
 Cq.data <- data.table::fread("test_data/username_date_time_model - Quantification Cq Results_0.csv",check.names=TRUE)
+
+# Display data
+knitr::kable(Cq.data)
 ```
 
+The `check.names=TRUE` argument of `fread` converts the spaces to dots in the field names, to miminize downstream processing errors. Each row in the table corresponds to a single well, and each field represents the following information:
+
+-   `Target`: The gene being amplified - essentially, the primer pair in the reaction.
+
+-   `Content`: The type of reaction. It is set by the Bio-Rad CFX Connect software and can have one of 3 values:
+
+    -   "NTC": non-template control
+
+    -   "Std": standard curve reaction
+
+    -   "Unkn": unknown sample reaction
+
+-   `Sample`: The reaction template and its biological replicate number.
+
+-   `Cq`: The calculated quantification cycle of the reaction.
+
+-   `Starting.Quantity..SQ`: Only for standard curve reactions, the template's starting quantity as was input during reaction setup.
+
+-   `Log.Starting.Quantity`: The base-10 logarithm os the starting quantity.
+
+Actual exported files from Bio-Rad CFX connector contain more fields, but this is all the information needed for the expression analysis.
+
+### Process real-time qPCR results
+
+To process the imported results, load the `qpcr.CFX.process` package and feed the primary data to the `qPCR_analysis_wrap` function. Set the arguments `refgene` to the name of your reference gene and `control` to the name of your control condition.
 
 ```{r}
+# Load the qpcr.CFX.process package
 library(qpcr.CFX.process)
-qPCR.analysis <- qPCR_analysis_wrap(Cq.data,refgene="reference.gene",control="control.condition")
+
+# Process qPCR results and store them in the qPCR.analysis variable as a list
+qPCR.analysis <- Cq.data |>
+  qPCR_analysis_wrap(refgene="reference.gene",
+                     control="control.condition")
 ```
+
+The qPCR results have now been processed and are contained in a list named `qPCR.analysis`.
+
+### Investigate real-time qPCR results
+
+To check the contents of `qPCR.analysis`, you can use the `str` function (as in "structure"). The `max.level` argument is set at 1, to only show the first level of the list's structure.
 
 ```{r}
 str(qPCR.analysis,max.level=1)
 ```
 
+Therefore, the qPCR.analysis list has 4 elements:
+
+-   `NTC`: A `data.table` with primer targets and Cq values, each row being a non-template control reaction.
+
+-   `std.curve`: A list of 3 elements. More on that below.
+
+-   `unk.rxn`: A `data.table` with Cq values for each sample, biological replicate and gene.
+
+-   `expression`: A `data.table` with the calculated expression of each sample, biological replicate and target gene.
+
+#### Non-template controls
+
+To see the `NTC` `data.table` of the `qPCR.analysis` list, call it as follows:
+
 ```{r}
 qPCR.analysis$NTC
 ```
+
+As we see, the non-template control reaction for gene.of.interest.1 has a Cq value of 34.9817 - while the other two non-template control reactions did not yield a Cq value (`NaN` - not a number).
+
+Ideally, all three should be `NaN`. However, as the Cq value is quite high, we can move forward.
+
+#### Standard curve calculations
+
+The `std.curve` element of the `qPCR.analysis` list contains the results of standard curve reactions and primer efficiencies and is itself a list of 3 elements. We can check its structure as follows:
 
 ```{r}
 str(qPCR.analysis$std.curve,max.level=1)
 ```
 
+-   `data`: A `data.table` with the Cq values against log(Starting quantity) for each target gene.
+
+-   `efficiencies`: A `data.table` with the calculated efficiencies for each target gene.
+
+-   `plot`: A `ggplot2`-based scatter plot with the drawn standard curves.
+
 ```{r}
 knitr::kable(qPCR.analysis$std.curve$data)
+```
+
+In the `data` `data.table`, each row corresponds to a target gene and starting quantity of template. The Cq.average and Cq.st.dev fields are the arithmetic mean and standard deviation of technical replicates, respectively.
+
+```{r}
 knitr::kable(qPCR.analysis$std.curve$efficiencies)
+```
+
+In the `efficiencies` `data.table`, each row corresponds to a target gene. The `slope` field is the slope of the regression line when Cq is plotted against log(starting quantity). The `efficiency` field shows the calculated primer efficiency (1 corresponds to 100%) and `amplification.base` is the calculated rate of increase per cycle (efficiency + 1).
+
+```{r}
 qPCR.analysis$std.curve$plot
 ```
 
+The `plot` element is a scatter plot with quantitation cycle against log(starting quantity), with regression lines for each target gene. Data points are the arithmetic means between technical replicates, while error bars show their standard deviation.
+
+#### Unknown reactions
 
 ```{r}
 knitr::kable(qPCR.analysis$unk.rxn)
 ```
 
+#### Calculated expression
+
 ```{r}
 knitr::kable(qPCR.analysis$expression)
 ```
 
-
+### Visualize expression results
 
 ```{r}
 library(datavis)
@@ -82,5 +189,3 @@ expression.plot <- qPCR.analysis$expression |>
 
 expression.plot
 ```
-
-
