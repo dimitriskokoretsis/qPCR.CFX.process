@@ -23,7 +23,7 @@
 #'
 #' @export
 
-qPCR_analysis_std_curve <- function(d,plot=FALSE) {
+qPCR_analysis_std_curve <- function(d,plot=TRUE) {
 
   d <- copy(d)
   setDT(d)
