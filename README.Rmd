@@ -13,19 +13,19 @@ knitr::opts_chunk$set(
 )
 ```
 
-# qpcr.CFX.process
+# qPCR.CFX.process
 
 <!-- badges: start -->
 
 <!-- badges: end -->
 
-The goal of the R package `qpcr.CFX.process` is to facilitate the processing of real-time quantitative PCR results, exported by the Bio-Rad CFX Connect software. It is meant for relative quantification of target genes, and supports one or multiple reference genes.
+The goal of the R package `qPCR.CFX.process` is to facilitate the processing of real-time quantitative PCR results, exported by the Bio-Rad CFX Connect software. It is meant for relative quantification of target genes, and supports one or multiple reference genes.
 
 Its input is calculated quantification cycle (Cq) values and its output is relative quantity to a designated control sample. If standard curve reactions are included, primer efficiencies are calculated and the method established by [Pfaffl (2001)](#ref1) is applied to calculate relative quantity, using the *common base* calculation approach, described by [Ganger et al. (2017)](#ref2). Otherwise, the [Livak and Schmittgen (2001)](#ref3) method is applied, assuming all primer efficiencies to be equal to 100%.
 
 ## Installation
 
-You can install `qpcr.CFX.process` package from [GitHub](https://github.com/) by using the `devtools` package. If `devtools` is not installed in your system, install it with the following line:
+You can install `qPCR.CFX.process` package from [GitHub](https://github.com/) by using the `devtools` package. If `devtools` is not installed in your system, install it with the following line:
 
 ```{r,eval=FALSE}
 install.packages("devtools")
@@ -34,12 +34,12 @@ install.packages("devtools")
 When `devtools` is installed, run the following line to install the `qpcr.CFX.process` package:
 
 ```{r,eval=FALSE}
-devtools::install_github("dimitriskokoretsis/qpcr.CFX.process")
+devtools::install_github("dimitriskokoretsis/qPCR.CFX.process")
 ```
 
 ## Setting up the real-time qPCR run
 
-The `qpcr.CFX.process` package makes certain assumptions about the structure of the data. Naming conventions in your setup should comply with these assumptions. The following rules should be followed:
+The `qPCR.CFX.process` package makes certain assumptions about the structure of the data. Naming conventions in your setup should comply with these assumptions. The following rules should be followed:
 
 -   Primer efficiencies are calculated from standard curves, based on serial dilutions of the template. The starting quantity input by the user is in arbitrary units, but the dilution rate is important. For example, input starting quantities of 5, 1, 0.2 and 0.04 should give the same efficiency results as 10, 2, 0.4 and 0.08 (both describe a dilution rate of 5).
 
@@ -49,11 +49,11 @@ The `qpcr.CFX.process` package makes certain assumptions about the structure of 
 
 ## Example
 
-We will demonstrate the functionality of `qpcr.CFX.process` with an example real-time qPCR result. In this mock experiment, the expression of **2 genes of interest** is measured on a **test condition**, in relation to a **control condition**. There are **3 biological replicates** for each condition and **one reference gene** is used.
+We will demonstrate the functionality of `qPCR.CFX.process` with an example real-time qPCR result. In this mock experiment, the expression of **2 genes of interest** is measured on a **test condition**, in relation to a **control condition**. There are **3 biological replicates** for each condition and **one reference gene** is used.
 
 ### Import real-time qPCR results to the R environment
 
-The Bio-Rad CFX software exports a number of different comma-separated files (.csv extension) per run. `qpcr.CFX.process` handles the file whose name ends in "Quantification Cq Results_0.csv". This file contains information on type of reaction, sample, amplification target, and calculated quantification cycle (Cq) per well.
+The Bio-Rad CFX software exports a number of different comma-separated files (.csv extension) per run. `qPCR.CFX.process` handles the file whose name ends in "Quantification Cq Results_0.csv". This file contains information on type of reaction, sample, amplification target, and calculated quantification cycle (Cq) per well.
 
 There are different ways to import a CSV file into the R environment. We will use the `fread` function of the `data.table` package to import the data in a `data.table`, which we will call `Cq.data`.
 
@@ -92,8 +92,8 @@ Actual exported files from Bio-Rad CFX connector contain more fields, but this i
 To process the imported results, load the `qpcr.CFX.process` package and feed the primary data to the `qPCR_analysis_wrap` function. This will perform the whole processing in one go. Set the arguments `refgene` to the name of your reference gene and `control` to the name of your control condition.
 
 ```{r}
-# Load the qpcr.CFX.process package
-library(qpcr.CFX.process)
+# Load the qPCR.CFX.process package
+library(qPCR.CFX.process)
 
 # Process qPCR results and store them in the qPCR.analysis variable as a list
 qPCR.analysis <- Cq.data |>
