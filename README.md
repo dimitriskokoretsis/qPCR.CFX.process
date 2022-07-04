@@ -22,15 +22,16 @@ efficiencies to be equal to 100%.
 
 ## Installation
 
-You can install the development version of `qpcr.CFX.process` from
-[GitHub](https://github.com/) by using the `devtools` package. If not
-installed in your system, install `devtools` with the following line:
+You can install `qpcr.CFX.process` package from
+[GitHub](https://github.com/) by using the `devtools` package. If
+`devtools` is not installed in your system, install it with the
+following line:
 
 ``` r
 install.packages("devtools")
 ```
 
-When `devtools` is installed, execute the following line to install the
+When `devtools` is installed, run the following line to install the
 `qpcr.CFX.process` package:
 
 ``` r
@@ -52,15 +53,15 @@ with these assumptions. The following rules should be followed:
 
 -   The “sample” field is used both for the name of the reaction
     template and for its biological replicate number. The biological
-    replicate number should be the last element and separated by space
-    from the sample’s name. For example: “template name X”, where X is
-    the biological replicate number. Sample name doesn’t matter for
+    replicate number should come last and be separated with a space from
+    the sample’s name. For example: “template name X”, where X is the
+    biological replicate number. Sample name doesn’t matter for
     calculations in standard curve reactions, as the same template is
     always used. Use a descriptive name for your convenience.
 
 -   Technical replicates should have the exact same names in all fields.
     They are essentially copies of the same reaction and their Cq values
-    are averaged.
+    will be averaged.
 
 ## Example
 
@@ -78,12 +79,9 @@ whose name ends in “Quantification Cq Results_0.csv”. This file contains
 information on type of reaction, sample, amplification target, and
 calculated quantification cycle (Cq) per well.
 
-To import a CSV file, use the `fread` function of the `data.table`
-package. This will create a `data.table`, which is similar to a standard
-R `data.frame`. The differences between the two are beyond the scope of
-this guide, but the curious reader can find more information
-[here](https://rdatatable.gitlab.io/data.table/). The `qpcr.CFX.process`
-package works well with either of the two.
+There are different ways to import a CSV file into the R environment. We
+will use the `fread` function of the `data.table` package to import the
+data in a `data.table`, which we will call `Cq.data`.
 
 ``` r
 # Import data from file
@@ -190,15 +188,15 @@ knitr::kable(Cq.data)
 | reference.gene     | Unkn    | test.condition 3    | 26.08465 |                    NaN |                   NaN |
 
 The `check.names=TRUE` argument of `fread` converts the spaces to dots
-in the field names, to miminize downstream processing errors. Each row
-in the table corresponds to a single well, and each field represents the
-following information:
+in the field names, to minimize downstream processing errors. Each row
+(record) of the table corresponds to a single well, and each column
+(field) represents the following information:
 
--   `Target`: The gene being amplified - essentially, the primer pair in
-    the reaction.
+-   `Target`: The gene being amplified - essentially, the primer pair
+    used in the reaction.
 
--   `Content`: The type of reaction. It is set by the Bio-Rad CFX
-    Connect software and can have one of 3 values:
+-   `Content`: The type of reaction. It is set during setup with the
+    Bio-Rad CFX Connect software and can have one of 3 values:
 
     -   “NTC”: non-template control
 
@@ -213,8 +211,8 @@ following information:
 -   `Starting.Quantity..SQ`: Only for standard curve reactions, the
     template’s starting quantity as was input during reaction setup.
 
--   `Log.Starting.Quantity`: The base-10 logarithm os the starting
-    quantity.
+-   `Log.Starting.Quantity`: Only for standard curve reactions, the
+    base-10 logarithm of the starting quantity.
 
 Actual exported files from Bio-Rad CFX connector contain more fields,
 but this is all the information needed for the expression analysis.
@@ -222,9 +220,10 @@ but this is all the information needed for the expression analysis.
 ### Process real-time qPCR results
 
 To process the imported results, load the `qpcr.CFX.process` package and
-feed the primary data to the `qPCR_analysis_wrap` function. Set the
-arguments `refgene` to the name of your reference gene and `control` to
-the name of your control condition.
+feed the primary data to the `qPCR_analysis_wrap` function. This will
+perform the whole processing in one go. Set the arguments `refgene` to
+the name of your reference gene and `control` to the name of your
+control condition.
 
 ``` r
 # Load the qpcr.CFX.process package
@@ -244,7 +243,7 @@ named `qPCR.analysis`.
 ### Investigate real-time qPCR results
 
 To check the contents of `qPCR.analysis`, you can use the `str` function
-(as in “structure”). The `max.level` argument is set at 1, to only show
+(as in “structure”). The `max.level` argument is set to 1, to only show
 the first level of the list’s structure.
 
 ``` r
@@ -259,13 +258,14 @@ str(qPCR.analysis,max.level=1)
 #>   ..- attr(*, ".internal.selfref")=<externalptr>
 ```
 
-Therefore, the qPCR.analysis list has 4 elements:
+Therefore, the `qPCR.analysis` list has 4 elements:
 
 -   `NTC`: A `data.table` with primer targets and Cq values, each row
     being a non-template control reaction.
 
--   `std.curve`: A list of 3 elements. More on that in the [Standard
-    curve calculations](#standard-curve-calculations) section.
+-   `std.curve`: A list of 3 elements. See [Standard curve
+    calculations](#standard-curve-calculations) section for more
+    details.
 
 -   `unk.rxn`: A `data.table` with Cq values for each sample, biological
     replicate and gene.
@@ -279,6 +279,7 @@ To see the `NTC` `data.table` of the `qPCR.analysis` list, call it as
 follows:
 
 ``` r
+# Display NTC data.table
 knitr::kable(qPCR.analysis$NTC)
 ```
 
@@ -320,10 +321,10 @@ str(qPCR.analysis$std.curve,max.level=1)
 -   `efficiencies`: A `data.table` with the calculated efficiencies for
     each target gene.
 
--   `plot`: A `ggplot2`-based scatter plot with the drawn standard
-    curves.
+-   `plot`: A `ggplot2`-based scatter plot with drawn standard curves.
 
 ``` r
+# Display "data" data.table
 knitr::kable(qPCR.analysis$std.curve$data)
 ```
 
@@ -343,11 +344,12 @@ knitr::kable(qPCR.analysis$std.curve$data)
 | reference.gene     | wild.type |              -1.39794 |   30.23797 | 0.1158650 |
 
 In the `data` `data.table`, each row corresponds to a target gene and
-starting quantity of template. The Cq.average and Cq.st.dev fields are
-the arithmetic mean and standard deviation of technical replicates,
+starting quantity of template. The `Cq.average` and `Cq.st.dev` fields
+are the arithmetic mean and standard deviation of technical replicates,
 respectively.
 
 ``` r
+# Display "efficiencies" data.table
 knitr::kable(qPCR.analysis$std.curve$efficiencies)
 ```
 
@@ -365,6 +367,7 @@ calculated primer efficiency (1 corresponds to 100%) and
 (efficiency + 1).
 
 ``` r
+# Display plot
 qPCR.analysis$std.curve$plot
 #> `geom_smooth()` using formula 'y ~ x'
 ```
@@ -382,6 +385,7 @@ The `unk.rxn` `data.table` gathers and summarizes the unknown sample
 reactions for each target gene, sample, and biological replicate.
 
 ``` r
+# Display "unk.rxn" data.table
 knitr::kable(qPCR.analysis$unk.rxn)
 ```
 
@@ -423,6 +427,7 @@ data processing. Each row corresponds to a sample, biological replicate
 and gene of interest.
 
 ``` r
+# Display "expression" data.table
 knitr::kable(qPCR.analysis$expression)
 ```
 
@@ -455,9 +460,9 @@ the most important ones are the following:
 We can visualize the fold-change between the control and test conditions
 for each gene of interest.
 
-Any visualization tool may be used. The `bar_point_plot` function of my
-own [`datavis`](https://github.com/dimitriskokoretsis/datavis) package
-is quite easy to use for this task. To install it in your system, follow
+Any visualization tool may be used. The `bar_point_plot` function of the
+[`datavis`](https://github.com/dimitriskokoretsis/datavis) package is
+quite easy to use for this task. To install it in your system, follow
 the instructions in its page.
 
 Importantly, for fold-change of quantity, mean and variation parameters
