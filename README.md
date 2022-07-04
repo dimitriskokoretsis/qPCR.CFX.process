@@ -233,8 +233,6 @@ library(qpcr.CFX.process)
 qPCR.analysis <- Cq.data |>
   qPCR_analysis_wrap(refgene="reference.gene",
                      control="control.condition")
-#> Warning in eval(jsub, SDenv, parent.frame()): Primer efficiency for is not
-#> provided, so 100% efficiency is assumed.
 ```
 
 The qPCR results have now been processed and are contained in a list
@@ -480,7 +478,7 @@ expression.plot <- qPCR.analysis$expression |>
   bar_point_plot(x="Target", # X axis grouping based on "Target" field
                  y="fold.change", # Y axis value is "fold.change" field
                  color.group="Sample", # Color grouping based on "Sample" field
-                 mean.type="geometric") # Calculate geometric mean and SD, instead of arithmetic
+                 mean.type="geometric") # Calculate geometric mean and SD instead of arithmetic
 
 # Show bar plot
 expression.plot
