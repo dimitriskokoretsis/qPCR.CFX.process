@@ -1,4 +1,4 @@
-Package: qpcr.CFX.process
+Package: qPCR.CFX.process
 Type: Package
 Title: Real-time qPCR data processing
 Version: 0.1.0
