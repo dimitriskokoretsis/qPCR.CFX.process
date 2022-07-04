@@ -1,12 +1,12 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# qpcr.CFX.process
+# qPCR.CFX.process
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of the R package `qpcr.CFX.process` is to facilitate the
+The goal of the R package `qPCR.CFX.process` is to facilitate the
 processing of real-time quantitative PCR results, exported by the
 Bio-Rad CFX Connect software. It is meant for relative quantification of
 target genes, and supports one or multiple reference genes.
@@ -22,7 +22,7 @@ efficiencies to be equal to 100%.
 
 ## Installation
 
-You can install `qpcr.CFX.process` package from
+You can install `qPCR.CFX.process` package from
 [GitHub](https://github.com/) by using the `devtools` package. If
 `devtools` is not installed in your system, install it with the
 following line:
@@ -35,12 +35,12 @@ When `devtools` is installed, run the following line to install the
 `qpcr.CFX.process` package:
 
 ``` r
-devtools::install_github("dimitriskokoretsis/qpcr.CFX.process")
+devtools::install_github("dimitriskokoretsis/qPCR.CFX.process")
 ```
 
 ## Setting up the real-time qPCR run
 
-The `qpcr.CFX.process` package makes certain assumptions about the
+The `qPCR.CFX.process` package makes certain assumptions about the
 structure of the data. Naming conventions in your setup should comply
 with these assumptions. The following rules should be followed:
 
@@ -65,7 +65,7 @@ with these assumptions. The following rules should be followed:
 
 ## Example
 
-We will demonstrate the functionality of `qpcr.CFX.process` with an
+We will demonstrate the functionality of `qPCR.CFX.process` with an
 example real-time qPCR result. In this mock experiment, the expression
 of **2 genes of interest** is measured on a **test condition**, in
 relation to a **control condition**. There are **3 biological
@@ -74,7 +74,7 @@ replicates** for each condition and **one reference gene** is used.
 ### Import real-time qPCR results to the R environment
 
 The Bio-Rad CFX software exports a number of different comma-separated
-files (.csv extension) per run. `qpcr.CFX.process` handles the file
+files (.csv extension) per run. `qPCR.CFX.process` handles the file
 whose name ends in “Quantification Cq Results_0.csv”. This file contains
 information on type of reaction, sample, amplification target, and
 calculated quantification cycle (Cq) per well.
@@ -226,8 +226,8 @@ the name of your reference gene and `control` to the name of your
 control condition.
 
 ``` r
-# Load the qpcr.CFX.process package
-library(qpcr.CFX.process)
+# Load the qPCR.CFX.process package
+library(qPCR.CFX.process)
 
 # Process qPCR results and store them in the qPCR.analysis variable as a list
 qPCR.analysis <- Cq.data |>
@@ -478,7 +478,7 @@ expression.plot <- qPCR.analysis$expression |>
   bar_point_plot(x="Target", # X axis grouping based on "Target" field
                  y="fold.change", # Y axis value is "fold.change" field
                  color.group="Sample", # Color grouping based on "Sample" field
-                 mean.type="geometric") # Calculate geometric mean and SD instead of arithmetic
+                 mean.type="geometric") # Calculate geometric mean and SD, instead of arithmetic
 
 # Show bar plot
 expression.plot
