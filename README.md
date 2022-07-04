@@ -32,7 +32,7 @@ install.packages("devtools")
 ```
 
 When `devtools` is installed, run the following line to install the
-`qpcr.CFX.process` package:
+`qPCR.CFX.process` package:
 
 ``` r
 devtools::install_github("dimitriskokoretsis/qPCR.CFX.process")
@@ -219,7 +219,7 @@ but this is all the information needed for the expression analysis.
 
 ### Process real-time qPCR results
 
-To process the imported results, load the `qpcr.CFX.process` package and
+To process the imported results, load the `qPCR.CFX.process` package and
 feed the primary data to the `qPCR_analysis_wrap` function. This will
 perform the whole processing in one go. Set the arguments `refgene` to
 the name of your reference gene and `control` to the name of your

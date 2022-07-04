@@ -31,7 +31,7 @@ You can install `qPCR.CFX.process` package from [GitHub](https://github.com/) by
 install.packages("devtools")
 ```
 
-When `devtools` is installed, run the following line to install the `qpcr.CFX.process` package:
+When `devtools` is installed, run the following line to install the `qPCR.CFX.process` package:
 
 ```{r,eval=FALSE}
 devtools::install_github("dimitriskokoretsis/qPCR.CFX.process")
@@ -89,7 +89,7 @@ Actual exported files from Bio-Rad CFX connector contain more fields, but this i
 
 ### Process real-time qPCR results
 
-To process the imported results, load the `qpcr.CFX.process` package and feed the primary data to the `qPCR_analysis_wrap` function. This will perform the whole processing in one go. Set the arguments `refgene` to the name of your reference gene and `control` to the name of your control condition.
+To process the imported results, load the `qPCR.CFX.process` package and feed the primary data to the `qPCR_analysis_wrap` function. This will perform the whole processing in one go. Set the arguments `refgene` to the name of your reference gene and `control` to the name of your control condition.
 
 ```{r}
 # Load the qPCR.CFX.process package
