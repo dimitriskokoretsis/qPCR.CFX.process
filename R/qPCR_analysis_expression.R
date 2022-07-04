@@ -40,8 +40,13 @@ qPCR_analysis_expression <- function(unkdata,refgene,efficiencies=NULL,control=N
     efficiencies <- data.table(Target=levels(unkdata$Target),amplification.base=NA)
   }
 
-  efficiencies[is.na(amplification.base),
-               warning(paste("Primer efficiency for",Target,"is not provided, so 100% efficiency is assumed."))]
+  for(i in 1:nrow(efficiencies)) {
+    if(is.na(efficiencies[i,amplification.base])) {
+      warning(paste("Primer efficiency for",
+                    efficiencies[i,Target],
+                    "is not provided, so 100% efficiency is assumed."))
+    }
+  }
 
   unkdata[,Cq.tech.sd := NULL]
 
