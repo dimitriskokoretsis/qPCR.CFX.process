@@ -25,7 +25,7 @@ Its input is calculated quantification cycle (Cq) values and its output is relat
 
 ## Installation
 
-You can install `qPCR.CFX.process` package from [GitHub](https://github.com/) by using the `devtools` package. If `devtools` is not installed in your system, install it with the following line:
+You can install the `qPCR.CFX.process` package from [GitHub](https://github.com/) by using the `devtools` package. If `devtools` is not installed in your system, install it with the following line:
 
 ```{r,eval=FALSE}
 install.packages("devtools")

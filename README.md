@@ -22,7 +22,7 @@ efficiencies to be equal to 100%.
 
 ## Installation
 
-You can install `qPCR.CFX.process` package from
+You can install the `qPCR.CFX.process` package from
 [GitHub](https://github.com/) by using the `devtools` package. If
 `devtools` is not installed in your system, install it with the
 following line:
