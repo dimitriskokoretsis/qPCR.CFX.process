@@ -415,5 +415,5 @@ blocking in qPCR experiments. BMC Bioinformatics, 18.
 
 <a name="ref3">Livak, K.J. & Schmittgen, T.D. (2001). Analysis of
 Relative Gene Expression Data Using Real-Time Quantitative PCR and the
-2−ΔΔCT Method. Methods, 25 (4), 402–408.
+2<sup>−ΔΔCT</sup> Method. Methods, 25 (4), 402–408.
 <https://doi.org/10.1006/meth.2001.1262></a>
