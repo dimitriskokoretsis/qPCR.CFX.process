@@ -88,14 +88,17 @@ data as a `data.table`, which we will call `Cq.data`.
 Cq.data <- data.table::fread("test_data/username_date_time_model - Quantification Cq Results_0.csv",check.names=TRUE)
 
 # Display first few lines of the data
-knitr::kable(Cq.data) |> head()
-#> [1] "|Target             |Content |Sample              |       Cq| Starting.Quantity..SQ.| Log.Starting.Quantity|"
-#> [2] "|:------------------|:-------|:-------------------|--------:|----------------------:|---------------------:|"
-#> [3] "|gene.of.interest.1 |Std     |wild.type           | 25.31687|                   5.00|               0.69897|"
-#> [4] "|gene.of.interest.1 |Std     |wild.type           | 25.18056|                   5.00|               0.69897|"
-#> [5] "|gene.of.interest.1 |Std     |wild.type           | 25.20548|                   5.00|               0.69897|"
-#> [6] "|gene.of.interest.1 |Std     |wild.type           | 27.47060|                   1.00|               0.00000|"
+Cq.data |> head() |> knitr::kable()
 ```
+
+| Target             | Content | Sample    |       Cq | Starting.Quantity..SQ. | Log.Starting.Quantity |
+|:-------------------|:--------|:----------|---------:|-----------------------:|----------------------:|
+| gene.of.interest.1 | Std     | wild.type | 25.31687 |                      5 |               0.69897 |
+| gene.of.interest.1 | Std     | wild.type | 25.18056 |                      5 |               0.69897 |
+| gene.of.interest.1 | Std     | wild.type | 25.20548 |                      5 |               0.69897 |
+| gene.of.interest.1 | Std     | wild.type | 27.47060 |                      1 |               0.00000 |
+| gene.of.interest.1 | Std     | wild.type | 27.59993 |                      1 |               0.00000 |
+| gene.of.interest.1 | Std     | wild.type | 27.50947 |                      1 |               0.00000 |
 
 The `check.names=TRUE` argument of `fread` converts the spaces to dots
 in the field names, to minimize downstream processing errors. To see the
