@@ -55,7 +55,7 @@ We will demonstrate the functionality of `qPCR.CFX.process` with an example real
 
 The Bio-Rad CFX software exports a number of different comma-separated files (.csv extension) per run. `qPCR.CFX.process` handles the file whose name ends in "Quantification Cq Results_0.csv". This file contains information on type of reaction, sample, amplification target, and calculated quantification cycle (Cq) per well.
 
-There are different ways to import a CSV file into the R environment. We will use the `fread` function of the `data.table` package to import the data in a `data.table`, which we will call `Cq.data`.
+There are different ways to import a CSV file into the R environment. We will use the `fread` function of the `data.table` package to import the data as a `data.table`, which we will call `Cq.data`.
 
 ```{r}
 # Import data from file

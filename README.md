@@ -81,7 +81,7 @@ calculated quantification cycle (Cq) per well.
 
 There are different ways to import a CSV file into the R environment. We
 will use the `fread` function of the `data.table` package to import the
-data in a `data.table`, which we will call `Cq.data`.
+data as a `data.table`, which we will call `Cq.data`.
 
 ``` r
 # Import data from file
