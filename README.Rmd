@@ -61,11 +61,13 @@ There are different ways to import a CSV file into the R environment. We will us
 # Import data from file
 Cq.data <- data.table::fread("test_data/username_date_time_model - Quantification Cq Results_0.csv",check.names=TRUE)
 
-# Display data
-knitr::kable(Cq.data)
+# Display first few lines of the data
+knitr::kable(Cq.data) |> head()
 ```
 
-The `check.names=TRUE` argument of `fread` converts the spaces to dots in the field names, to minimize downstream processing errors. Each row (record) of the table corresponds to a single well, and each column (field) represents the following information:
+The `check.names=TRUE` argument of `fread` converts the spaces to dots in the field names, to minimize downstream processing errors. To see the full data, download the [csv file](https://github.com/dimitriskokoretsis/qPCR.CFX.process/raw/main/test_data/username_date_time_model%20-%20Quantification%20Cq%20Results_0.csv).
+
+Each row (record) of the table corresponds to a single well, and each column (field) represents the following information:
 
 -   `Target`: The gene being amplified - essentially, the primer pair used in the reaction.
 

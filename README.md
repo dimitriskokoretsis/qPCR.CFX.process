@@ -87,110 +87,23 @@ data as a `data.table`, which we will call `Cq.data`.
 # Import data from file
 Cq.data <- data.table::fread("test_data/username_date_time_model - Quantification Cq Results_0.csv",check.names=TRUE)
 
-# Display data
-knitr::kable(Cq.data)
+# Display first few lines of the data
+knitr::kable(Cq.data) |> head()
+#> [1] "|Target             |Content |Sample              |       Cq| Starting.Quantity..SQ.| Log.Starting.Quantity|"
+#> [2] "|:------------------|:-------|:-------------------|--------:|----------------------:|---------------------:|"
+#> [3] "|gene.of.interest.1 |Std     |wild.type           | 25.31687|                   5.00|               0.69897|"
+#> [4] "|gene.of.interest.1 |Std     |wild.type           | 25.18056|                   5.00|               0.69897|"
+#> [5] "|gene.of.interest.1 |Std     |wild.type           | 25.20548|                   5.00|               0.69897|"
+#> [6] "|gene.of.interest.1 |Std     |wild.type           | 27.47060|                   1.00|               0.00000|"
 ```
 
-| Target             | Content | Sample              |       Cq | Starting.Quantity..SQ. | Log.Starting.Quantity |
-|:-------------------|:--------|:--------------------|---------:|-----------------------:|----------------------:|
-| gene.of.interest.1 | Std     | wild.type           | 25.31687 |                   5.00 |               0.69897 |
-| gene.of.interest.1 | Std     | wild.type           | 25.18056 |                   5.00 |               0.69897 |
-| gene.of.interest.1 | Std     | wild.type           | 25.20548 |                   5.00 |               0.69897 |
-| gene.of.interest.1 | Std     | wild.type           | 27.47060 |                   1.00 |               0.00000 |
-| gene.of.interest.1 | Std     | wild.type           | 27.59993 |                   1.00 |               0.00000 |
-| gene.of.interest.1 | Std     | wild.type           | 27.50947 |                   1.00 |               0.00000 |
-| gene.of.interest.1 | Std     | wild.type           | 28.81033 |                   0.20 |              -0.69897 |
-| gene.of.interest.1 | Std     | wild.type           | 28.91089 |                   0.20 |              -0.69897 |
-| gene.of.interest.1 | Std     | wild.type           | 28.83967 |                   0.20 |              -0.69897 |
-| gene.of.interest.1 | Std     | wild.type           | 32.07517 |                   0.04 |              -1.39794 |
-| gene.of.interest.1 | Std     | wild.type           | 31.47049 |                   0.04 |              -1.39794 |
-| gene.of.interest.1 | Std     | wild.type           | 31.70834 |                   0.04 |              -1.39794 |
-| gene.of.interest.1 | NTC     |                     | 34.98170 |                    NaN |                   NaN |
-| gene.of.interest.2 | Std     | wild.type           | 29.90019 |                   5.00 |               0.69897 |
-| gene.of.interest.2 | Std     | wild.type           | 30.45874 |                   5.00 |               0.69897 |
-| gene.of.interest.2 | Std     | wild.type           | 30.32889 |                   5.00 |               0.69897 |
-| gene.of.interest.2 | Std     | wild.type           | 31.36213 |                   1.00 |               0.00000 |
-| gene.of.interest.2 | Std     | wild.type           | 31.18277 |                   1.00 |               0.00000 |
-| gene.of.interest.2 | Std     | wild.type           | 31.21550 |                   1.00 |               0.00000 |
-| gene.of.interest.2 | Std     | wild.type           | 34.91536 |                   0.20 |              -0.69897 |
-| gene.of.interest.2 | Std     | wild.type           | 33.36605 |                   0.20 |              -0.69897 |
-| gene.of.interest.2 | Std     | wild.type           | 34.25686 |                   0.20 |              -0.69897 |
-| gene.of.interest.2 | Std     | wild.type           | 38.33584 |                   0.04 |              -1.39794 |
-| gene.of.interest.2 | Std     | wild.type           | 37.99009 |                   0.04 |              -1.39794 |
-| gene.of.interest.2 | Std     | wild.type           | 38.26446 |                   0.04 |              -1.39794 |
-| gene.of.interest.2 | NTC     |                     |      NaN |                    NaN |                   NaN |
-| reference.gene     | Std     | wild.type           | 23.72250 |                   5.00 |               0.69897 |
-| reference.gene     | Std     | wild.type           | 23.72578 |                   5.00 |               0.69897 |
-| reference.gene     | Std     | wild.type           | 23.71567 |                   5.00 |               0.69897 |
-| reference.gene     | Std     | wild.type           | 25.80885 |                   1.00 |               0.00000 |
-| reference.gene     | Std     | wild.type           | 25.51385 |                   1.00 |               0.00000 |
-| reference.gene     | Std     | wild.type           | 25.61845 |                   1.00 |               0.00000 |
-| reference.gene     | Std     | wild.type           | 28.08328 |                   0.20 |              -0.69897 |
-| reference.gene     | Std     | wild.type           | 28.02725 |                   0.20 |              -0.69897 |
-| reference.gene     | Std     | wild.type           | 28.04874 |                   0.20 |              -0.69897 |
-| reference.gene     | Std     | wild.type           | 30.36816 |                   0.04 |              -1.39794 |
-| reference.gene     | Std     | wild.type           | 30.14619 |                   0.04 |              -1.39794 |
-| reference.gene     | Std     | wild.type           | 30.19956 |                   0.04 |              -1.39794 |
-| reference.gene     | NTC     |                     |      NaN |                    NaN |                   NaN |
-| gene.of.interest.1 | Unkn    | control.condition 1 | 28.10107 |                    NaN |                   NaN |
-| gene.of.interest.1 | Unkn    | control.condition 1 | 28.00969 |                    NaN |                   NaN |
-| gene.of.interest.1 | Unkn    | control.condition 1 | 27.97419 |                    NaN |                   NaN |
-| gene.of.interest.1 | Unkn    | control.condition 2 | 28.18124 |                    NaN |                   NaN |
-| gene.of.interest.1 | Unkn    | control.condition 2 | 27.92769 |                    NaN |                   NaN |
-| gene.of.interest.1 | Unkn    | control.condition 2 | 27.58434 |                    NaN |                   NaN |
-| gene.of.interest.1 | Unkn    | control.condition 3 | 28.97493 |                    NaN |                   NaN |
-| gene.of.interest.1 | Unkn    | control.condition 3 | 28.23828 |                    NaN |                   NaN |
-| gene.of.interest.1 | Unkn    | control.condition 3 | 28.33302 |                    NaN |                   NaN |
-| gene.of.interest.1 | Unkn    | test.condition 1    | 26.84763 |                    NaN |                   NaN |
-| gene.of.interest.1 | Unkn    | test.condition 1    | 26.19705 |                    NaN |                   NaN |
-| gene.of.interest.1 | Unkn    | test.condition 1    | 26.75797 |                    NaN |                   NaN |
-| gene.of.interest.1 | Unkn    | test.condition 2    | 26.59074 |                    NaN |                   NaN |
-| gene.of.interest.1 | Unkn    | test.condition 2    | 26.43531 |                    NaN |                   NaN |
-| gene.of.interest.1 | Unkn    | test.condition 2    | 25.85585 |                    NaN |                   NaN |
-| gene.of.interest.1 | Unkn    | test.condition 3    | 27.03001 |                    NaN |                   NaN |
-| gene.of.interest.1 | Unkn    | test.condition 3    | 27.24894 |                    NaN |                   NaN |
-| gene.of.interest.1 | Unkn    | test.condition 3    | 26.70993 |                    NaN |                   NaN |
-| gene.of.interest.2 | Unkn    | control.condition 1 | 34.68549 |                    NaN |                   NaN |
-| gene.of.interest.2 | Unkn    | control.condition 1 | 34.81189 |                    NaN |                   NaN |
-| gene.of.interest.2 | Unkn    | control.condition 1 | 34.96419 |                    NaN |                   NaN |
-| gene.of.interest.2 | Unkn    | control.condition 2 | 35.28110 |                    NaN |                   NaN |
-| gene.of.interest.2 | Unkn    | control.condition 2 | 35.53064 |                    NaN |                   NaN |
-| gene.of.interest.2 | Unkn    | control.condition 2 | 34.70007 |                    NaN |                   NaN |
-| gene.of.interest.2 | Unkn    | control.condition 3 | 34.62332 |                    NaN |                   NaN |
-| gene.of.interest.2 | Unkn    | control.condition 3 | 34.65434 |                    NaN |                   NaN |
-| gene.of.interest.2 | Unkn    | control.condition 3 | 34.62697 |                    NaN |                   NaN |
-| gene.of.interest.2 | Unkn    | test.condition 1    | 31.41039 |                    NaN |                   NaN |
-| gene.of.interest.2 | Unkn    | test.condition 1    | 32.10934 |                    NaN |                   NaN |
-| gene.of.interest.2 | Unkn    | test.condition 1    | 31.24901 |                    NaN |                   NaN |
-| gene.of.interest.2 | Unkn    | test.condition 2    | 31.15962 |                    NaN |                   NaN |
-| gene.of.interest.2 | Unkn    | test.condition 2    | 31.39998 |                    NaN |                   NaN |
-| gene.of.interest.2 | Unkn    | test.condition 2    | 31.31049 |                    NaN |                   NaN |
-| gene.of.interest.2 | Unkn    | test.condition 3    | 32.92115 |                    NaN |                   NaN |
-| gene.of.interest.2 | Unkn    | test.condition 3    | 32.63306 |                    NaN |                   NaN |
-| gene.of.interest.2 | Unkn    | test.condition 3    | 32.83479 |                    NaN |                   NaN |
-| reference.gene     | Unkn    | control.condition 1 | 25.70499 |                    NaN |                   NaN |
-| reference.gene     | Unkn    | control.condition 1 | 25.77324 |                    NaN |                   NaN |
-| reference.gene     | Unkn    | control.condition 1 | 26.01208 |                    NaN |                   NaN |
-| reference.gene     | Unkn    | control.condition 2 | 25.57582 |                    NaN |                   NaN |
-| reference.gene     | Unkn    | control.condition 2 | 25.47155 |                    NaN |                   NaN |
-| reference.gene     | Unkn    | control.condition 2 | 25.68859 |                    NaN |                   NaN |
-| reference.gene     | Unkn    | control.condition 3 | 25.42625 |                    NaN |                   NaN |
-| reference.gene     | Unkn    | control.condition 3 | 25.62250 |                    NaN |                   NaN |
-| reference.gene     | Unkn    | control.condition 3 | 25.60219 |                    NaN |                   NaN |
-| reference.gene     | Unkn    | test.condition 1    | 25.53302 |                    NaN |                   NaN |
-| reference.gene     | Unkn    | test.condition 1    | 25.68075 |                    NaN |                   NaN |
-| reference.gene     | Unkn    | test.condition 1    | 25.43289 |                    NaN |                   NaN |
-| reference.gene     | Unkn    | test.condition 2    | 25.67935 |                    NaN |                   NaN |
-| reference.gene     | Unkn    | test.condition 2    | 25.92961 |                    NaN |                   NaN |
-| reference.gene     | Unkn    | test.condition 2    | 26.08242 |                    NaN |                   NaN |
-| reference.gene     | Unkn    | test.condition 3    | 25.50338 |                    NaN |                   NaN |
-| reference.gene     | Unkn    | test.condition 3    | 25.83698 |                    NaN |                   NaN |
-| reference.gene     | Unkn    | test.condition 3    | 26.08465 |                    NaN |                   NaN |
-
 The `check.names=TRUE` argument of `fread` converts the spaces to dots
-in the field names, to minimize downstream processing errors. Each row
-(record) of the table corresponds to a single well, and each column
-(field) represents the following information:
+in the field names, to minimize downstream processing errors. To see the
+full data, download the [csv
+file](https://github.com/dimitriskokoretsis/qPCR.CFX.process/raw/main/test_data/username_date_time_model%20-%20Quantification%20Cq%20Results_0.csv).
+
+Each row (record) of the table corresponds to a single well, and each
+column (field) represents the following information:
 
 -   `Target`: The gene being amplified - essentially, the primer pair
     used in the reaction.
