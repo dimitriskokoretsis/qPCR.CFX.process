@@ -17,8 +17,8 @@ reactions are included, primer efficiencies are calculated and the
 method established by [Pfaffl (2001)](#ref1) is applied to calculate
 relative quantity, using the *common base* calculation approach,
 described by [Ganger et al. (2017)](#ref2). Otherwise, the [Livak and
-Schmittgen (2001)](#ref3) method is applied, assuming all primer
-efficiencies to be equal to 100%.
+Schmittgen (2001)](#ref3) method (or 2<sup>-ΔΔCt</sup>) is applied,
+assuming all primer efficiencies to be equal to 100%.
 
 ## Installation
 
