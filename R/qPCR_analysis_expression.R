@@ -2,7 +2,7 @@
 #'
 #' @description
 #' Calculates the relative quantity of target genes between one control sample and one or more test samples.
-#' Based on one or multiple reference genes.
+#' Based on one or multiple reference genes.\loadmathjax
 #'
 #' @details
 #' Applies the Pfaffl calculation method, accounting for different primer efficiencies
@@ -38,6 +38,7 @@
 #' -  `fold.change`: Fold-change of quantity in relation to control sample.
 #'
 #' @import data.table
+#' @import mathjaxr
 #'
 #' @export
 

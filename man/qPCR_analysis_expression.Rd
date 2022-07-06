@@ -40,7 +40,7 @@ A \code{data.table} with the calculated expression of each sample, biological re
 }
 \description{
 Calculates the relative quantity of target genes between one control sample and one or more test samples.
-Based on one or multiple reference genes.
+Based on one or multiple reference genes.\loadmathjax
 }
 \details{
 Applies the Pfaffl calculation method, accounting for different primer efficiencies
