@@ -13,7 +13,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-# qPCR.CFX.process: R package for automated processing of real-time qPCR data
+# qPCR.CFX.process
+
+## R package for automated processing of real-time qPCR data
 
 <!-- badges: start -->
 

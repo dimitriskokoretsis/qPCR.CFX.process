@@ -1,7 +1,9 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# qPCR.CFX.process: R package for automated processing of real-time qPCR data
+# qPCR.CFX.process
+
+## R package for automated processing of real-time qPCR data
 
 <!-- badges: start -->
 <!-- badges: end -->
