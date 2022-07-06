@@ -264,7 +264,7 @@ expression.plot
 
 <a name="ref1">1. Pfaffl, M.W. (2001). A new mathematical model for relative quantification in real-time RT–PCR. Nucleic Acids Research, 29 (9), e45. <https://doi.org/10.1093/nar/29.9.e45></a>
 
-<a name="ref2">2. Ganger, M.T., Dietz, G.D. & Ewing, S.J. (2017). A common base method for analysis of qPCR data and the application of simple blocking in qPCR experiments. BMC Bioinformatics, 18. <https://doi.org/10.1186/s12859-017-1949-5></a>
+<a name="ref2">2. Ganger, M.T., Dietz, G.D. & Ewing, S.J. (2017). A common base method for analysis of qPCR data and the application of simple blocking in qPCR experiments. BMC Bioinformatics, 18, 534. <https://doi.org/10.1186/s12859-017-1949-5></a>
 
 <a name="ref3">3. Livak, K.J. & Schmittgen, T.D. (2001). Analysis of Relative Gene Expression Data Using Real-Time Quantitative PCR and the 2<sup>−ΔΔCT</sup> Method. Methods, 25 (4), 402–408. <https://doi.org/10.1006/meth.2001.1262></a>
 

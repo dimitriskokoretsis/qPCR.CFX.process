@@ -464,7 +464,7 @@ relative quantification in real-time RT–PCR. Nucleic Acids Research, 29
 
 <a name="ref2">2. Ganger, M.T., Dietz, G.D. & Ewing, S.J. (2017). A
 common base method for analysis of qPCR data and the application of
-simple blocking in qPCR experiments. BMC Bioinformatics, 18.
+simple blocking in qPCR experiments. BMC Bioinformatics, 18, 534.
 <https://doi.org/10.1186/s12859-017-1949-5></a>
 
 <a name="ref3">3. Livak, K.J. & Schmittgen, T.D. (2001). Analysis of
