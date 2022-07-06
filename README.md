@@ -91,6 +91,8 @@ data as a `data.table`, which we will call `Cq.data`.
 Cq.data <- data.table::fread("test_data/username_date_time_model - Quantification Cq Results_0.csv",check.names=TRUE)
 
 # Display first few lines of the data
+# head() limits the display to the first few lines
+# knitr::kable() formats the display aesthetically
 Cq.data |> head() |> knitr::kable()
 ```
 
@@ -159,9 +161,9 @@ named `qPCR.analysis`.
 
 ### Investigate real-time qPCR results
 
-To check the contents of `qPCR.analysis`, you can use the `str` function
-(as in “structure”). The `max.level` argument is set to 1, to only show
-the first level of the list’s structure.
+To check the contents of `qPCR.analysis`, use the `str` function (as in
+“structure”). Set its `max.level` argument is set to 1, to only show the
+first level of the list’s structure.
 
 ``` r
 str(qPCR.analysis,max.level=1)
@@ -206,9 +208,9 @@ knitr::kable(qPCR.analysis$NTC)
 | gene.of.interest.2 |     NaN |
 | reference.gene     |     NaN |
 
-As we see, the non-template control reaction for gene.of.interest.1 has
-a Cq value of 34.9817 - while the other two non-template control
-reactions did not yield a Cq value (`NaN` - not a number).
+The non-template control reaction for gene.of.interest.1 has a Cq value
+of 34.9817 - while the other two non-template control reactions did not
+yield a Cq value (`NaN` - not a number).
 
 Ideally, all three should be `NaN`. However, as the Cq value is quite
 high, we can move forward.
@@ -217,7 +219,7 @@ high, we can move forward.
 
 The `std.curve` element of the `qPCR.analysis` list contains the results
 of standard curve reactions and primer efficiencies and is itself a list
-of 3 elements. We can check its structure as follows:
+of 3 elements. Check its structure as follows:
 
 ``` r
 str(qPCR.analysis$std.curve,max.level=1)
@@ -291,7 +293,7 @@ qPCR.analysis$std.curve$plot
 
 <img src="man/figures/README-unnamed-chunk-11-1.png" width="100%" />
 
-The `plot` element is a scatter plot with quantitation cycle against
+The `plot` element is a scatter plot with quantification cycle against
 log(starting quantity), with regression lines for each target gene. Data
 points are the arithmetic means between technical replicates, while
 error bars show their standard deviation.
@@ -382,7 +384,7 @@ Any visualization tool may be used. The `bar_point_plot` function of the
 quite easy to use for this task. To install it in your system, follow
 the instructions in its page.
 
-Importantly, for fold-change of quantity, mean and variation parameters
+Importantly, for fold-change of quantity, mean and standard deviation
 only make sense in the logarithmic scale. By setting the `mean.type`
 argument to “geometric”, the mean and standard deviation are calculated
 on log-transformed fold-change and then exponentiated back to their
