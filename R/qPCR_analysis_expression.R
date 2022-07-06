@@ -29,7 +29,7 @@
 #' -  `Cq.tech.mean`: Arithmetic average of Cq between technical replicates for each gene of interest, sample and biological replicate.
 #' -  `reference.gene.Cq.tech.mean`: Arithmetic average of Cq between technical replicates for each reference gene, sample and biological replicate.
 #' -  `reference.gene.amplification.base`: Amplification base of each reference gene, as provided by standard curve calculations. If not provided, amplification base 2 will be assumed.
-#' -  `reference.gene.Cq.weighed`: Weighed Cq (or $Cq_{ref}^{w}$) for each reference gene and biological replicate. Calculated as follows: $Cq_{ref}^{w} = Cq_{ref} \times log_{2}amplification.base_{ref}$
+#' -  `reference.gene.Cq.weighed`: Weighed Cq (or Cq^w^_ref_) for each reference gene and biological replicate. Calculated as follows: Cq^w^_ref_ = Cq_ref_ * log_2_amplification.base_ref_
 #' -  `Ref.Cq.weighed.mean`: Arithmetic mean of weighed Cq between all reference genes for each sample and biological replicate.
 #' -  `GOI.amplification.base`: Amplification base of each gene of interest, as provided by standard curve calculations. If not provided, amplification base 2 will be assumed.
 #' -  `GOI.Cq.weighed`: Weighed Cq (or Cq^w^_GOI_) for each gene of interest and biological replicate. Calculated as follows: Cq^w^_GOI_ = Cq_GOI_ * log_2_amplification.base_GOI_
