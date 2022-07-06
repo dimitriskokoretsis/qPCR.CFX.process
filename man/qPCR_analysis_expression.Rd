@@ -39,7 +39,6 @@ A \code{data.table} with the calculated expression of each sample, biological re
 }
 }
 \description{
-\loadmathjax
 Calculates the relative quantity of target genes between one control sample and one or more test samples.
 Based on one or multiple reference genes.
 }
