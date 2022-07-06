@@ -1,8 +1,9 @@
 #' Real-time qPCR relative quantity calculation.
 #'
 #' @description
+#' \loadmathjax
 #' Calculates the relative quantity of target genes between one control sample and one or more test samples.
-#' Based on one or multiple reference genes.\loadmathjax
+#' Based on one or multiple reference genes.
 #'
 #' @details
 #' Applies the Pfaffl calculation method, accounting for different primer efficiencies
