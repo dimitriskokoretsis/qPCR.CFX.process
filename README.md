@@ -427,14 +427,17 @@ for each gene of interest.
 
 Any visualization tool may be used. The `bar_point_plot` function of the
 [`datavis`](https://github.com/dimitriskokoretsis/datavis) package is
-quite easy to use for this task. To install it in your system, follow
-the instructions in its page.
+quite handy for this task. To install it in your system, follow the
+instructions in its page.
 
 Importantly, for fold-change of quantity, mean and standard deviation
-only make sense in the logarithmic scale. By setting the `mean.type`
-argument to “geometric”, the mean and standard deviation are calculated
-on log-transformed fold-change and then exponentiated back to their
-original scale. These are the *geometric* mean and standard deviation.
+calculations only make sense in the logarithmic
+scale[<sup>4</sup>](#ref4).
+
+By setting the `mean.type` argument to “geometric”, the mean and
+standard deviation are calculated on log-transformed fold-change and
+then exponentiated back to their original scale. These are the
+*geometric* mean and standard deviation.
 
 ``` r
 # Load datavis package
@@ -468,3 +471,9 @@ simple blocking in qPCR experiments. BMC Bioinformatics, 18.
 Relative Gene Expression Data Using Real-Time Quantitative PCR and the
 2<sup>−ΔΔCT</sup> Method. Methods, 25 (4), 402–408.
 <https://doi.org/10.1006/meth.2001.1262></a>
+
+<a name="ref4">4. Taylor, S.C., Nadeau, K., Abbasi, M., Lachance, C.,
+Nguyen, M. & Fenrich, J. (2019). The Ultimate qPCR Experiment: Producing
+Publication Quality, Reproducible Data the First Time. Trends in
+Biotechnology, 37 (7), 761–774.
+<https://doi.org/10.1016/j.tibtech.2018.12.002></a>
