@@ -31,7 +31,7 @@ A \code{data.table} with the calculated expression of each sample, biological re
 \item \code{reference.gene.Cq.weighed}: Weighed Cq (or $Cq_{ref}^{w}$) for each reference gene and biological replicate. Calculated as follows: $Cq_{ref}^{w} = Cq_{ref} \times log_{2}amplification.base_{ref}$
 \item \code{Ref.Cq.weighed.mean}: Arithmetic mean of weighed Cq between all reference genes for each sample and biological replicate.
 \item \code{GOI.amplification.base}: Amplification base of each gene of interest, as provided by standard curve calculations. If not provided, amplification base 2 will be assumed.
-\item \code{GOI.Cq.weighed}: Weighed Cq (or $Cq_{GOI}^{w}$) for each gene of interest and biological replicate. Calculated as follows: $Cq_{GOI}^{w} = Cq_{GOI} \times log_{2}amplification.base_{GOI}$
+\item \code{GOI.Cq.weighed}: Weighed Cq (or Cq^w^\emph{GOI}) for each gene of interest and biological replicate. Calculated as follows: Cq^w^\emph{GOI} = Cq_GOI_ * log_2_amplification.base_GOI_
 \item \code{DCq.weighed}: Difference between \code{Ref.Cq.weighed.mean} and and \code{GOI.Cq.weighed}.
 \item \code{control.DCq.weighed}: Average \code{DCq.weighed} of designated control sample for each gene of interest.
 \item \code{log2.fold.change}: Difference between \code{DCq.weighed} and \code{control.DCq.weighed}. Also equal to log_2_ of fold-change.
