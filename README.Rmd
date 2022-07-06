@@ -203,13 +203,37 @@ The `expression` `data.table` is the final result of the real-time qPCR data pro
 knitr::kable(qPCR.analysis$expression)
 ```
 
-There are many fields in this table to depict calculation stages, but the most important ones are the following:
+There are many fields in the `expression` table to depict calculation stages based on Ganger et al. (2017)[<sup>2</sup>](#ref2), but the most important ones are the following:
 
--   `Sample`: Name of sample template
+-   `Sample`: Name of sample template.
 
--   `Target`: Name of gene of interest
+-   `Target`: Name of gene of interest.
 
--   `fold.change`: Fold-change of quantity in relation to control sample
+-   `fold.change`: Fold-change of quantity in relation to control sample.
+
+Other fields in the `expression` table:
+
+-   `Biol.rep`: Biological replicate number.
+
+-   `Cq.tech.mean`: Arithmetic average of Cq between technical replicates for each gene of interest, sample and biological replicate.
+
+-   `reference.gene.Cq.tech.mean`: Arithmetic average of Cq between technical replicates for each reference gene, sample and biological replicate.
+
+-   `reference.gene.amplification.base`: Amplification base of each reference gene, as provided by standard curve calculations. If not provided, amplification base 2 will be assumed.
+
+-   `reference.gene.Cq.weighed`: Weighed Cq (or $Cq_{ref}^{w}$) for each reference gene and biological replicate. Calculated as follows: $Cq_{ref}^{w} = Cq \times log_{2}amplification.base_{ref}$
+
+-   `Ref.Cq.weighed.mean`: Arithmetic mean of weighed Cq between all reference genes for each sample and biological replicate.
+
+-   `GOI.amplification.base`: Amplification base of each gene of interest, as provided by standard curve calculations. If not provided, amplification base 2 will be assumed.
+
+-   `GOI.Cq.weighed`: Weighed Cq (or $Cq_{ref}^{w}$) for each gene of interest and biological replicate. Calculated as follows: $Cq_{GOI}^{w} = Cq \times log_{2}amplification.base_{GOI}$
+
+-   `DCq.weighed`: Difference between `Ref.Cq.weighed.mean` and and `GOI.Cq.weighed`.
+
+-   `control.DCq.weighed`: Average `DCq.weighed` of designated control sample for each gene of interest.
+
+-   `log2.fold.change`: Difference between `DCq.weighed` and `control.DCq.weighed`. Also equal to log<sub>2</sub> of fold-change.
 
 ### Visualize expression results
 

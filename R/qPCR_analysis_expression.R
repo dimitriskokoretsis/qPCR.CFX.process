@@ -100,7 +100,7 @@ qPCR_analysis_expression <- function(unkdata,refgene,efficiencies=NULL,control=N
             mean(DCq.weighed[Sample==control]),
           by=Target]
 
-  # Calculate DDCq.weighed
+  # Calculate log2.fold.change
   unkdata[,log2.fold.change:=
             DCq.weighed-control.DCq.weighed]
 

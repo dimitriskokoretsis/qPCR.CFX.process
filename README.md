@@ -365,14 +365,60 @@ knitr::kable(qPCR.analysis$expression)
 | test.condition    | 2        | gene.of.interest.2 |     31.29003 |                    25.89713 |                          2.081375 |                  27.38716 |            27.38716 |               1.821933 |       27.08058 |   0.3065821 |           -3.054538 |        3.3611203 |  10.2753832 |
 | test.condition    | 3        | gene.of.interest.2 |     32.79633 |                    25.80833 |                          2.081375 |                  27.29326 |            27.29326 |               1.821933 |       28.38424 |  -1.0909790 |           -3.054538 |        1.9635592 |   3.9002299 |
 
-There are many fields in this table to depict calculation stages, but
-the most important ones are the following:
+There are many fields in the `expression` table to depict calculation
+stages based on Ganger et al. (2017)[<sup>2</sup>](#ref2), but the most
+important ones are the following:
 
--   `Sample`: Name of sample template
+-   `Sample`: Name of sample template.
 
--   `Target`: Name of gene of interest
+-   `Target`: Name of gene of interest.
 
--   `fold.change`: Fold-change of quantity in relation to control sample
+-   `fold.change`: Fold-change of quantity in relation to control
+    sample.
+
+Other fields in the `expression` table:
+
+-   `Biol.rep`: Biological replicate number.
+
+-   `Cq.tech.mean`: Arithmetic average of Cq between technical
+    replicates for each gene of interest, sample and biological
+    replicate.
+
+-   `reference.gene.Cq.tech.mean`: Arithmetic average of Cq between
+    technical replicates for each reference gene, sample and biological
+    replicate.
+
+-   `reference.gene.amplification.base`: Amplification base of each
+    reference gene, as provided by standard curve calculations. If not
+    provided, amplification base 2 will be assumed.
+
+-   `reference.gene.Cq.weighed`: Weighed Cq (or
+    ![Cq\_{ref}^{w}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Cq_%7Bref%7D%5E%7Bw%7D "Cq_{ref}^{w}"))
+    for each reference gene and biological replicate. Calculated as
+    follows:
+    ![Cq\_{ref}^{w} = Cq \\times log\_{2}amplification.base\_{ref}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Cq_%7Bref%7D%5E%7Bw%7D%20%3D%20Cq%20%5Ctimes%20log_%7B2%7Damplification.base_%7Bref%7D "Cq_{ref}^{w} = Cq \times log_{2}amplification.base_{ref}")
+
+-   `Ref.Cq.weighed.mean`: Arithmetic mean of weighed Cq between all
+    reference genes for each sample and biological replicate.
+
+-   `GOI.amplification.base`: Amplification base of each gene of
+    interest, as provided by standard curve calculations. If not
+    provided, amplification base 2 will be assumed.
+
+-   `GOI.Cq.weighed`: Weighed Cq (or
+    ![Cq\_{ref}^{w}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Cq_%7Bref%7D%5E%7Bw%7D "Cq_{ref}^{w}"))
+    for each gene of interest and biological replicate. Calculated as
+    follows:
+    ![Cq\_{GOI}^{w} = Cq \\times log\_{2}amplification.base\_{GOI}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Cq_%7BGOI%7D%5E%7Bw%7D%20%3D%20Cq%20%5Ctimes%20log_%7B2%7Damplification.base_%7BGOI%7D "Cq_{GOI}^{w} = Cq \times log_{2}amplification.base_{GOI}")
+
+-   `DCq.weighed`: Difference between `Ref.Cq.weighed.mean` and and
+    `GOI.Cq.weighed`.
+
+-   `control.DCq.weighed`: Average `DCq.weighed` of designated control
+    sample for each gene of interest.
+
+-   `log2.fold.change`: Difference between `DCq.weighed` and
+    `control.DCq.weighed`. Also equal to log<sub>2</sub> of fold-change.
 
 ### Visualize expression results
 
