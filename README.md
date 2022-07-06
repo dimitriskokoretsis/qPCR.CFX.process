@@ -328,15 +328,15 @@ knitr::kable(qPCR.analysis$unk.rxn)
 | test.condition    | 2        | reference.gene     |     25.89713 |  0.2034858 |
 | test.condition    | 3        | reference.gene     |     25.80833 |  0.2916914 |
 
--   `Sample`: Name of sample template
+-   `Sample`: Name of sample template.
 
--   `Biol.rep`: Biological replicate number
+-   `Biol.rep`: Biological replicate number.
 
--   `Target`: Name of target gene
+-   `Target`: Name of target gene.
 
--   `Cq.tech.mean`: Arithmetic mean between technical replicates
+-   `Cq.tech.mean`: Arithmetic mean between technical replicates.
 
--   `Cq.tech.sd`: Standard deviation between technical replicates
+-   `Cq.tech.sd`: Standard deviation between technical replicates.
 
 #### Calculated expression
 

@@ -6,7 +6,12 @@
 #'
 #' @param d `data.frame`, Cq value data exported from Bio-Rad CFX Connect real-time PCR machine.
 #'
-#' @return A `data.table` with Cq values for each sample, biological replicate and gene.
+#' @return A `data.table` with Cq values for each sample, biological replicate and gene. Contains the following fields:
+#' -  `Sample`: Name of sample template.
+#' -  `Biol.rep`: Biological replicate number.
+#' -  `Target`: Name of target gene.
+#' -  `Cq.tech.mean`: Arithmetic mean between technical replicates.
+#' -  `Cq.tech.sd`: Standard deviation between technical replicates.
 #'
 #' @import data.table
 #'

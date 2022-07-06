@@ -184,15 +184,15 @@ The `unk.rxn` `data.table` gathers and summarizes the unknown sample reactions f
 knitr::kable(qPCR.analysis$unk.rxn)
 ```
 
--   `Sample`: Name of sample template
+-   `Sample`: Name of sample template.
 
--   `Biol.rep`: Biological replicate number
+-   `Biol.rep`: Biological replicate number.
 
--   `Target`: Name of target gene
+-   `Target`: Name of target gene.
 
--   `Cq.tech.mean`: Arithmetic mean between technical replicates
+-   `Cq.tech.mean`: Arithmetic mean between technical replicates.
 
--   `Cq.tech.sd`: Standard deviation between technical replicates
+-   `Cq.tech.sd`: Standard deviation between technical replicates.
 
 #### Calculated expression
 

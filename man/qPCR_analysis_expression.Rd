@@ -20,7 +20,23 @@ Defaults to \code{NULL}, which assumes all primer pairs' efficiency being equal 
 Defaults to the 1st sample alphabetically.}
 }
 \value{
-A \code{data.table} with the calculated expression of each sample, biological replicate and target gene.
+A \code{data.table} with the calculated expression of each sample, biological replicate and target gene. Contains the following fields:
+\itemize{
+\item \code{Sample}: Name of sample template.
+\item \code{Biol.rep}: Biological replicate number.
+\item \code{Target}: Name of gene of interest.
+\item \code{Cq.tech.mean}: Arithmetic average of Cq between technical replicates for each gene of interest, sample and biological replicate.
+\item \code{reference.gene.Cq.tech.mean}: Arithmetic average of Cq between technical replicates for each reference gene, sample and biological replicate.
+\item \code{reference.gene.amplification.base}: Amplification base of each reference gene, as provided by standard curve calculations. If not provided, amplification base 2 will be assumed.
+\item \code{reference.gene.Cq.weighed}: Weighed Cq (or $Cq_{ref}^{w}$) for each reference gene and biological replicate. Calculated as follows: $Cq_{ref}^{w} = Cq_{ref} \times log_{2}amplification.base_{ref}$
+\item \code{Ref.Cq.weighed.mean}: Arithmetic mean of weighed Cq between all reference genes for each sample and biological replicate.
+\item \code{GOI.amplification.base}: Amplification base of each gene of interest, as provided by standard curve calculations. If not provided, amplification base 2 will be assumed.
+\item \code{GOI.Cq.weighed}: Weighed Cq (or $Cq_{GOI}^{w}$) for each gene of interest and biological replicate. Calculated as follows: $Cq_{GOI}^{w} = Cq_{GOI} \times log_{2}amplification.base_{GOI}$
+\item \code{DCq.weighed}: Difference between \code{Ref.Cq.weighed.mean} and and \code{GOI.Cq.weighed}.
+\item \code{control.DCq.weighed}: Average \code{DCq.weighed} of designated control sample for each gene of interest.
+\item \code{log2.fold.change}: Difference between \code{DCq.weighed} and \code{control.DCq.weighed}. Also equal to log_2_ of fold-change.
+\item \code{fold.change}: Fold-change of quantity in relation to control sample.
+}
 }
 \description{
 Calculates the relative quantity of target genes between one control sample and one or more test samples.

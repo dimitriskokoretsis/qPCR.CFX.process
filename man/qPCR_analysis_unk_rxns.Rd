@@ -10,7 +10,14 @@ qPCR_analysis_unk_rxns(d)
 \item{d}{\code{data.frame}, Cq value data exported from Bio-Rad CFX Connect real-time PCR machine.}
 }
 \value{
-A \code{data.table} with Cq values for each sample, biological replicate and gene.
+A \code{data.table} with Cq values for each sample, biological replicate and gene. Contains the following fields:
+\itemize{
+\item \code{Sample}: Name of sample template.
+\item \code{Biol.rep}: Biological replicate number.
+\item \code{Target}: Name of target gene.
+\item \code{Cq.tech.mean}: Arithmetic mean between technical replicates.
+\item \code{Cq.tech.sd}: Standard deviation between technical replicates.
+}
 }
 \description{
 Parses primary qPCR data (Cq values) and calculates technical means for each sample, biological replicate and gene.
