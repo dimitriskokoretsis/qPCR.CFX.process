@@ -28,7 +28,7 @@
 #' -  `Cq.tech.mean`: Arithmetic average of Cq between technical replicates for each gene of interest, sample and biological replicate.
 #' -  `reference.gene.Cq.tech.mean`: Arithmetic average of Cq between technical replicates for each reference gene, sample and biological replicate.
 #' -  `reference.gene.amplification.base`: Amplification base of each reference gene, as provided by standard curve calculations. If not provided, amplification base 2 will be assumed.
-#' -  `reference.gene.Cq.weighed`: Weighed Cq (or \Sexpr[results=rd,stage=build]{katex::math_to_rd("Cq^{w}_{ref}")}) for each reference gene and biological replicate. Calculated as follows: Cq^{w}_{ref} = Cq_{ref} * log_{2}amplification.base_{ref}
+#' -  `reference.gene.Cq.weighed`: Weighed Cq (or Cq^{w}_{ref}) for each reference gene and biological replicate. Calculated as follows: Cq^{w}_{ref} = Cq_{ref} * log_{2}amplification.base_{ref}
 #' -  `Ref.Cq.weighed.mean`: Arithmetic mean of weighed Cq between all reference genes for each sample and biological replicate.
 #' -  `GOI.amplification.base`: Amplification base of each gene of interest, as provided by standard curve calculations. If not provided, amplification base 2 will be assumed.
 #' -  `GOI.Cq.weighed`: Weighed Cq (or Cq^{w}^=_{GOI}) for each gene of interest and biological replicate. Calculated as follows: Cq^{w}_{GOI} = Cq_{GOI} * log_{2}amplification.base_{GOI}
