@@ -92,7 +92,7 @@ Cq.data <- data.table::fread("test_data/username_date_time_model - Quantificatio
 
 # Display first few lines of the data
 # head() limits the display to the first few lines
-# knitr::kable() formats the display aesthetically
+# knitr::kable() formats aesthetically the display
 Cq.data |> head() |> knitr::kable()
 ```
 
