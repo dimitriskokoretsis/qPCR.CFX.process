@@ -1,11 +1,5 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-<style>
-span.MathJax {
-  background-color: rgb(0,0,0)
-  text-color: rgb(255,255,255)
-}
-</style>
 
 # qPCR.CFX.process
 
