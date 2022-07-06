@@ -32,7 +32,7 @@ Field is repeated for each reference gene, with the \verb{[reference.gene]} part
 If not provided, amplification base 2 will be assumed.
 Field is repeated for each reference gene, with the \verb{[reference.gene]} part being the gene's name.
 \item \verb{[reference.gene].Cq.weighed}: Weighed Cq (or $Cq^{w}\emph{{ref}$), for each reference gene and biological replicate.
-Calculated as follows: $Cq^{w}}{ref} = Cq_{ref} * log_{2}amplification.base_{ref}$
+Calculated as follows: $Cq^{w}}{ref} = Cq_{ref} * log_{2}amplification.base_{ref}$.
 Field is repeated for each reference gene, with the \verb{[reference.gene]} part being the gene's name.
 \item \code{Ref.Cq.weighed.mean}: Arithmetic mean of weighed Cq between all reference genes, for each sample and biological replicate.
 \item \code{GOI.amplification.base}: Amplification base of each gene of interest, as provided by standard curve calculations.
