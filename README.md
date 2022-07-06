@@ -396,7 +396,7 @@ Other fields in the `expression` table:
     ![Cq\_{ref}^{w}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Cq_%7Bref%7D%5E%7Bw%7D "Cq_{ref}^{w}"))
     for each reference gene and biological replicate. Calculated as
     follows:
-    ![Cq\_{ref}^{w} = Cq \\times log\_{2}amplification.base\_{ref}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Cq_%7Bref%7D%5E%7Bw%7D%20%3D%20Cq%20%5Ctimes%20log_%7B2%7Damplification.base_%7Bref%7D "Cq_{ref}^{w} = Cq \times log_{2}amplification.base_{ref}")
+    ![Cq\_{ref}^{w} = Cq\_{ref} \\times log\_{2}amplification.base\_{ref}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Cq_%7Bref%7D%5E%7Bw%7D%20%3D%20Cq_%7Bref%7D%20%5Ctimes%20log_%7B2%7Damplification.base_%7Bref%7D "Cq_{ref}^{w} = Cq_{ref} \times log_{2}amplification.base_{ref}")
 
 -   `Ref.Cq.weighed.mean`: Arithmetic mean of weighed Cq between all
     reference genes for each sample and biological replicate.
@@ -406,10 +406,10 @@ Other fields in the `expression` table:
     provided, amplification base 2 will be assumed.
 
 -   `GOI.Cq.weighed`: Weighed Cq (or
-    ![Cq\_{ref}^{w}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Cq_%7Bref%7D%5E%7Bw%7D "Cq_{ref}^{w}"))
+    ![Cq\_{GOI}^{w}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Cq_%7BGOI%7D%5E%7Bw%7D "Cq_{GOI}^{w}"))
     for each gene of interest and biological replicate. Calculated as
     follows:
-    ![Cq\_{GOI}^{w} = Cq \\times log\_{2}amplification.base\_{GOI}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Cq_%7BGOI%7D%5E%7Bw%7D%20%3D%20Cq%20%5Ctimes%20log_%7B2%7Damplification.base_%7BGOI%7D "Cq_{GOI}^{w} = Cq \times log_{2}amplification.base_{GOI}")
+    ![Cq\_{GOI}^{w} = Cq\_{GOI} \\times log\_{2}amplification.base\_{GOI}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Cq_%7BGOI%7D%5E%7Bw%7D%20%3D%20Cq_%7BGOI%7D%20%5Ctimes%20log_%7B2%7Damplification.base_%7BGOI%7D "Cq_{GOI}^{w} = Cq_{GOI} \times log_{2}amplification.base_{GOI}")
 
 -   `DCq.weighed`: Difference between `Ref.Cq.weighed.mean` and and
     `GOI.Cq.weighed`.
