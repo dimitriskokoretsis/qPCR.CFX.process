@@ -6,7 +6,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of the R package `qPCR.CFX.process` is to facilitate the
+The goal of the `qPCR.CFX.process` package is to facilitate the
 processing of real-time quantitative PCR results, exported by the
 Bio-Rad CFX Connect software. It is meant for relative quantification of
 target genes, and supports one or multiple reference genes.
@@ -14,15 +14,16 @@ target genes, and supports one or multiple reference genes.
 Its input is calculated quantification cycle (Cq) values and its output
 is relative quantity to a designated control sample. If standard curve
 reactions are included, primer efficiencies are calculated and the
-method established by [Pfaffl (2001)](#ref1) is applied to calculate
-relative quantity, using the *common base* calculation approach,
-described by [Ganger et al. (2017)](#ref2). Otherwise, the [Livak and
-Schmittgen (2001)](#ref3) method (or 2<sup>-ΔΔCt</sup>) is applied,
-assuming all primer efficiencies to be equal to 100%.
+method established by Pfaffl (2001)[<sup>1</sup>](#ref1) is applied to
+calculate relative quantity, using the *common base* calculation
+approach, described by Ganger et al. (2017)[<sup>2</sup>](#ref2).
+Otherwise, the Livak & Schmittgen (2001)[<sup>3</sup>](#ref3) method (or
+2<sup>-ΔΔCt</sup>) is applied, assuming primer efficiencies to be equal
+to 100%.
 
 ## Installation
 
-You can install the `qPCR.CFX.process` package from
+Install the `qPCR.CFX.process` package from
 [GitHub](https://github.com/) by using the `devtools` package. If
 `devtools` is not installed in your system, install it with the
 following line:
