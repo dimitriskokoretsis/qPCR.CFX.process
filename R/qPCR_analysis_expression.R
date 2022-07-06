@@ -21,19 +21,26 @@
 #' @param control Character. The name of the control sample, against which all other samples will be compared.
 #' Defaults to the 1st sample alphabetically.
 #'
-#' @return A `data.table` with the calculated expression of each sample, biological replicate and target gene. Contains the following fields:
+#' @return A `data.table` with the calculated expression of each sample, biological replicate and gene of interest. Contains the following fields:
 #' -  `Sample`: Name of sample template.
 #' -  `Biol.rep`: Biological replicate number.
 #' -  `Target`: Name of gene of interest.
-#' -  `Cq.tech.mean`: Arithmetic average of Cq between technical replicates for each gene of interest, sample and biological replicate.
-#' -  `reference.gene.Cq.tech.mean`: Arithmetic average of Cq between technical replicates for each reference gene, sample and biological replicate.
-#' -  `reference.gene.amplification.base`: Amplification base of each reference gene, as provided by standard curve calculations. If not provided, amplification base 2 will be assumed.
-#' -  `reference.gene.Cq.weighed`: Weighed Cq (or $Cq^{w}_{ref}$) for each reference gene and biological replicate. Calculated as follows: $Cq^{w}_{ref} = Cq_{ref} * log_{2}amplification.base_{ref}$
-#' -  `Ref.Cq.weighed.mean`: Arithmetic mean of weighed Cq between all reference genes for each sample and biological replicate.
-#' -  `GOI.amplification.base`: Amplification base of each gene of interest, as provided by standard curve calculations. If not provided, amplification base 2 will be assumed.
-#' -  `GOI.Cq.weighed`: Weighed Cq (or $Cq^{w}_{GOI}$) for each gene of interest and biological replicate. Calculated as follows: $Cq^{w}_{GOI} = Cq_{GOI} * log_{2}amplification.base_{GOI}$
+#' -  `Cq.tech.mean`: Arithmetic average of Cq between technical replicates, for each gene of interest, sample and biological replicate.
+#' -  `[reference.gene].Cq.tech.mean`: Arithmetic average of Cq between technical replicates, for each reference gene, sample and biological replicate.
+#' Field is repeated for each reference gene, with the `[reference.gene]` part being the gene's name.
+#' -  `[reference.gene].amplification.base`: Amplification base of each reference gene, as provided by standard curve calculations.
+#' If not provided, amplification base 2 will be assumed.
+#' Field is repeated for each reference gene, with the `[reference.gene]` part being the gene's name.
+#' -  `[reference.gene].Cq.weighed`: Weighed Cq (or $Cq^{w}_{ref}$), for each reference gene and biological replicate.
+#' Calculated as follows: $Cq^{w}_{ref} = Cq_{ref} * log_{2}amplification.base_{ref}$
+#' Field is repeated for each reference gene, with the `[reference.gene]` part being the gene's name.
+#' -  `Ref.Cq.weighed.mean`: Arithmetic mean of weighed Cq between all reference genes, for each sample and biological replicate.
+#' -  `GOI.amplification.base`: Amplification base of each gene of interest, as provided by standard curve calculations.
+#' If not provided, amplification base 2 will be assumed.
+#' -  `GOI.Cq.weighed`: Weighed Cq (or $Cq^{w}_{GOI}$), for each gene of interest and biological replicate.
+#' Calculated as follows: $Cq^{w}_{GOI} = Cq_{GOI} * log_{2}amplification.base_{GOI}$
 #' -  `DCq.weighed`: Difference between `Ref.Cq.weighed.mean` and and `GOI.Cq.weighed`.
-#' -  `control.DCq.weighed`: Average `DCq.weighed` of designated control sample for each gene of interest.
+#' -  `control.DCq.weighed`: Average `DCq.weighed` of designated control sample, for each gene of interest.
 #' -  `log2.fold.change`: Difference between `DCq.weighed` and `control.DCq.weighed`. Also equal to log_2_ of fold-change.
 #' -  `fold.change`: Fold-change of quantity in relation to control sample.
 #'

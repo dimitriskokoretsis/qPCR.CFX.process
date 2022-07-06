@@ -380,32 +380,37 @@ Other fields in the `expression` table:
 -   `Biol.rep`: Biological replicate number.
 
 -   `Cq.tech.mean`: Arithmetic average of Cq between technical
-    replicates for each gene of interest, sample and biological
+    replicates, for each gene of interest, sample and biological
     replicate.
 
--   `reference.gene.Cq.tech.mean`: Arithmetic average of Cq between
-    technical replicates for each reference gene, sample and biological
-    replicate.
+-   `[reference.gene].Cq.tech.mean`: Arithmetic average of Cq between
+    technical replicates, for each reference gene, sample and biological
+    replicate. Field is repeated for each reference gene, with the
+    `[reference.gene]` part being the gene’s name.
 
--   `reference.gene.amplification.base`: Amplification base of each
+-   `[reference.gene].amplification.base`: Amplification base of each
     reference gene, as provided by standard curve calculations. If not
-    provided, amplification base 2 will be assumed.
+    provided, amplification base 2 will be assumed. Field is repeated
+    for each reference gene, with the `[reference.gene]` part being the
+    gene’s name.
 
--   `reference.gene.Cq.weighed`: Weighed Cq (or
-    ![Cq\_{ref}^{w}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Cq_%7Bref%7D%5E%7Bw%7D "Cq_{ref}^{w}"))
+-   `[reference.gene].Cq.weighed`: Weighed Cq (or
+    ![Cq\_{ref}^{w}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Cq_%7Bref%7D%5E%7Bw%7D "Cq_{ref}^{w}")),
     for each reference gene and biological replicate. Calculated as
     follows:
-    ![Cq\_{ref}^{w} = Cq\_{ref} \\times log\_{2}amplification.base\_{ref}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Cq_%7Bref%7D%5E%7Bw%7D%20%3D%20Cq_%7Bref%7D%20%5Ctimes%20log_%7B2%7Damplification.base_%7Bref%7D "Cq_{ref}^{w} = Cq_{ref} \times log_{2}amplification.base_{ref}")
+    ![Cq\_{ref}^{w} = Cq\_{ref} \\times log\_{2}amplification.base\_{ref}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Cq_%7Bref%7D%5E%7Bw%7D%20%3D%20Cq_%7Bref%7D%20%5Ctimes%20log_%7B2%7Damplification.base_%7Bref%7D "Cq_{ref}^{w} = Cq_{ref} \times log_{2}amplification.base_{ref}").
+    Field is repeated for each reference gene, with the
+    `[reference.gene]` part being the gene’s name.
 
 -   `Ref.Cq.weighed.mean`: Arithmetic mean of weighed Cq between all
-    reference genes for each sample and biological replicate.
+    reference genes, for each sample and biological replicate.
 
 -   `GOI.amplification.base`: Amplification base of each gene of
     interest, as provided by standard curve calculations. If not
     provided, amplification base 2 will be assumed.
 
 -   `GOI.Cq.weighed`: Weighed Cq (or
-    ![Cq\_{GOI}^{w}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Cq_%7BGOI%7D%5E%7Bw%7D "Cq_{GOI}^{w}"))
+    ![Cq\_{GOI}^{w}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Cq_%7BGOI%7D%5E%7Bw%7D "Cq_{GOI}^{w}")),
     for each gene of interest and biological replicate. Calculated as
     follows:
     ![Cq\_{GOI}^{w} = Cq\_{GOI} \\times log\_{2}amplification.base\_{GOI}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Cq_%7BGOI%7D%5E%7Bw%7D%20%3D%20Cq_%7BGOI%7D%20%5Ctimes%20log_%7B2%7Damplification.base_%7BGOI%7D "Cq_{GOI}^{w} = Cq_{GOI} \times log_{2}amplification.base_{GOI}")
@@ -414,7 +419,7 @@ Other fields in the `expression` table:
     `GOI.Cq.weighed`.
 
 -   `control.DCq.weighed`: Average `DCq.weighed` of designated control
-    sample for each gene of interest.
+    sample, for each gene of interest.
 
 -   `log2.fold.change`: Difference between `DCq.weighed` and
     `control.DCq.weighed`. Also equal to log<sub>2</sub> of fold-change.
