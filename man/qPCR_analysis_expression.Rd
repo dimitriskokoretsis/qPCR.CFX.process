@@ -31,18 +31,18 @@ Field is repeated for each reference gene, with the \verb{[reference.gene]} part
 \item \verb{[reference.gene].amplification.base}: Amplification base of each reference gene, as provided by standard curve calculations.
 If not provided, amplification base 2 will be assumed.
 Field is repeated for each reference gene, with the \verb{[reference.gene]} part being the gene's name.
-\item \verb{[reference.gene].Cq.weighed}: Weighed Cq (or $Cq^{w}\emph{{ref}$), for each reference gene and biological replicate.
-Calculated as follows: $Cq^{w}}{ref} = Cq_{ref} * log_{2}amplification.base_{ref}$.
+\item \verb{[reference.gene].Cq.weighed}: Weighed Cq for each reference gene and biological replicate.
+Calculated as follows: \verb{[reference.gene].Cq.tech.mean} * log2(\verb{[reference.gene].amplification.base}).
 Field is repeated for each reference gene, with the \verb{[reference.gene]} part being the gene's name.
 \item \code{Ref.Cq.weighed.mean}: Arithmetic mean of weighed Cq between all reference genes, for each sample and biological replicate.
 \item \code{GOI.amplification.base}: Amplification base of each gene of interest, as provided by standard curve calculations.
 If not provided, amplification base 2 will be assumed.
-\item \code{GOI.Cq.weighed}: Weighed Cq (or $Cq^{w}\emph{{GOI}$), for each gene of interest and biological replicate.
-Calculated as follows: $Cq^{w}}{GOI} = Cq_{GOI} * log_{2}amplification.base_{GOI}$
-\item \code{DCq.weighed}: Difference between \code{Ref.Cq.weighed.mean} and and \code{GOI.Cq.weighed}.
+\item \code{GOI.Cq.weighed}: Weighed Cq for each gene of interest and biological replicate.
+Calculated as follows: \code{Cq.tech.mean} * log2(\code{GOI.amplification.base}).
+\item \code{DCq.weighed}: Difference between \code{Ref.Cq.weighed.mean} and \code{GOI.Cq.weighed}.
 \item \code{control.DCq.weighed}: Average \code{DCq.weighed} of designated control sample, for each gene of interest.
-\item \code{log2.fold.change}: Difference between \code{DCq.weighed} and \code{control.DCq.weighed}. Also equal to log_2_ of fold-change.
-\item \code{fold.change}: Fold-change of quantity in relation to control sample.
+\item \code{log2.fold.change}: Difference between \code{DCq.weighed} and \code{control.DCq.weighed}. Also equal to base-2 logarithm of fold-change.
+\item \code{fold.change}: Fold-change of quantity in relation to control sample. Calculated as 2^(\code{log2.fold.change}).
 }
 }
 \description{
