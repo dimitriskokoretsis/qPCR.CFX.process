@@ -31,18 +31,18 @@
 #' -  `[reference.gene].amplification.base`: Amplification base of each reference gene, as provided by standard curve calculations.
 #' If not provided, amplification base 2 will be assumed.
 #' Field is repeated for each reference gene, with the `[reference.gene]` part being the gene's name.
-#' -  `[reference.gene].Cq.weighed`: Weighed Cq (or $Cq^{w}_{ref}$), for each reference gene and biological replicate.
-#' Calculated as follows: $Cq^{w}_{ref} = Cq_{ref} * log_{2}amplification.base_{ref}$.
+#' -  `[reference.gene].Cq.weighed`: Weighed Cq for each reference gene and biological replicate.
+#' Calculated as follows: `[reference.gene].Cq.tech.mean` * log2(`[reference.gene].amplification.base`).
 #' Field is repeated for each reference gene, with the `[reference.gene]` part being the gene's name.
 #' -  `Ref.Cq.weighed.mean`: Arithmetic mean of weighed Cq between all reference genes, for each sample and biological replicate.
 #' -  `GOI.amplification.base`: Amplification base of each gene of interest, as provided by standard curve calculations.
 #' If not provided, amplification base 2 will be assumed.
-#' -  `GOI.Cq.weighed`: Weighed Cq (or $Cq^{w}_{GOI}$), for each gene of interest and biological replicate.
-#' Calculated as follows: $Cq^{w}_{GOI} = Cq_{GOI} * log_{2}amplification.base_{GOI}$
-#' -  `DCq.weighed`: Difference between `Ref.Cq.weighed.mean` and and `GOI.Cq.weighed`.
+#' -  `GOI.Cq.weighed`: Weighed Cq for each gene of interest and biological replicate.
+#' Calculated as follows: `Cq.tech.mean` * log2(`GOI.amplification.base`).
+#' -  `DCq.weighed`: Difference between `Ref.Cq.weighed.mean` and `GOI.Cq.weighed`.
 #' -  `control.DCq.weighed`: Average `DCq.weighed` of designated control sample, for each gene of interest.
-#' -  `log2.fold.change`: Difference between `DCq.weighed` and `control.DCq.weighed`. Also equal to log_2_ of fold-change.
-#' -  `fold.change`: Fold-change of quantity in relation to control sample.
+#' -  `log2.fold.change`: Difference between `DCq.weighed` and `control.DCq.weighed`. Also equal to base-2 logarithm of fold-change.
+#' -  `fold.change`: Fold-change of quantity in relation to control sample. Calculated as 2^(`log2.fold.change`).
 #'
 #' @import data.table
 #'
