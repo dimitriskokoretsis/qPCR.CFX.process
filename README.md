@@ -88,7 +88,7 @@ data as a `data.table`, which we will call `Cq.data`.
 
 ``` r
 # Import data from file
-Cq.data <- data.table::fread("test_data/username_date_time_model - Quantification Cq Results_0.csv",check.names=TRUE)
+Cq.data <- data.table::fread("demo_data/username_date_time_model - Quantification Cq Results_0.csv",check.names=TRUE)
 
 # Display first few lines of the data
 # head() limits the display to the first few lines
@@ -108,7 +108,7 @@ Cq.data |> head() |> knitr::kable()
 The `check.names=TRUE` argument of `fread` converts the spaces to dots
 in the field names, to minimize downstream processing errors. To see the
 full data, download the [csv
-file](https://github.com/dimitriskokoretsis/qPCR.CFX.process/raw/main/test_data/username_date_time_model%20-%20Quantification%20Cq%20Results_0.csv).
+file](https://github.com/dimitriskokoretsis/qPCR.CFX.process/raw/main/demo_data/username_date_time_model%20-%20Quantification%20Cq%20Results_0.csv).
 
 Each row (record) of the table corresponds to a single well, and each
 column (field) represents the following information:
