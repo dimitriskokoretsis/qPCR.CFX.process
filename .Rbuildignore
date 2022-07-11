@@ -1,5 +1,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-test_data*
 ^README\.Rmd$
-guide*
+^guide$
+^test_data$
