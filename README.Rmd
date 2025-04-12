@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: end -->
 
-The goal of the `qPCR.CFX.process` package is to facilitate the processing of real-time quantitative PCR results, exported by the Bio-Rad CFX Connect software. It is meant for relative quantification of target genes, and supports one or multiple reference genes. Its input is calculated quantification cycle (Cq) values and its output is relative quantity to a designated control sample.
+The `qPCR.CFX.process` package aims to facilitate the processing of real-time quantitative PCR results exported by the Bio-Rad CFX Connect software. It is meant for relative quantification of target genes, and supports one or multiple reference genes. Its input is calculated quantification cycle (Cq) values and its output is relative quantity to a designated control sample.
 
 If standard curve reactions are included, primer efficiencies are calculated and the method established by Pfaffl (2001)[<sup>1</sup>](#ref1) is applied to calculate relative quantity. The *common base*[<sup>2</sup>](#ref2) calculation approach is followed, which gives identical results to the Pfaffl calculation approach. Otherwise, the 2<sup>-ΔΔCt</sup> method[<sup>3</sup>](#ref3) is applied, assuming primer efficiencies to be equal to 100%.
 
@@ -221,13 +221,13 @@ Other fields in the `expression` table:
 
 -   `[reference.gene].amplification.base`: Amplification base of each reference gene, as provided by standard curve calculations. If not provided, amplification base 2 will be assumed. Field is repeated for each reference gene, with the `[reference.gene]` part being the gene's name.
 
--   `[reference.gene].Cq.weighed`: Weighed Cq (or $Cq_{ref}^{w}$), for each reference gene and biological replicate. Calculated as follows: $Cq_{ref}^{w} = Cq_{ref} \times log_{2}amplification.base_{ref}$. Field is repeated for each reference gene, with the `[reference.gene]` part being the gene's name.
+-   `[reference.gene].Cq.weighed`: Weighed Cq (or $Cq_{ref}^{w}$), for each reference gene and biological replicate. Calculated as follows: $Cq_{ref}^{w} = Cq_{ref} \cdot log_{2}amplification.base_{ref}$. Field is repeated for each reference gene, with the `[reference.gene]` part being the gene's name.
 
 -   `Ref.Cq.weighed.mean`: Arithmetic mean of weighed Cq between all reference genes, for each sample and biological replicate.
 
 -   `GOI.amplification.base`: Amplification base of each gene of interest, as provided by standard curve calculations. If not provided, amplification base 2 will be assumed.
 
--   `GOI.Cq.weighed`: Weighed Cq (or $Cq_{GOI}^{w}$), for each gene of interest and biological replicate. Calculated as follows: $Cq_{GOI}^{w} = Cq_{GOI} \times log_{2}amplification.base_{GOI}$
+-   `GOI.Cq.weighed`: Weighed Cq (or $Cq_{GOI}^{w}$), for each gene of interest and biological replicate. Calculated as follows: $Cq_{GOI}^{w} = Cq_{GOI} \cdot log_{2}amplification.base_{GOI}$
 
 -   `DCq.weighed`: Difference between `Ref.Cq.weighed.mean` and and `GOI.Cq.weighed`.
 
@@ -262,11 +262,11 @@ expression.plot
 
 ## References
 
-<a name="ref1">1. Pfaffl, M.W. (2001). A new mathematical model for relative quantification in real-time RT–PCR. Nucleic Acids Research, 29 (9), e45. <https://doi.org/10.1093/nar/29.9.e45></a>
+<a name="ref1"></a>1. Pfaffl, M.W. (2001). A new mathematical model for relative quantification in real-time RT–PCR. Nucleic Acids Research, 29 (9), e45. <https://doi.org/10.1093/nar/29.9.e45>
 
-<a name="ref2">2. Ganger, M.T., Dietz, G.D. & Ewing, S.J. (2017). A common base method for analysis of qPCR data and the application of simple blocking in qPCR experiments. BMC Bioinformatics, 18, 534. <https://doi.org/10.1186/s12859-017-1949-5></a>
+<a name="ref2"></a>2. Ganger, M.T., Dietz, G.D. & Ewing, S.J. (2017). A common base method for analysis of qPCR data and the application of simple blocking in qPCR experiments. BMC Bioinformatics, 18, 534. <https://doi.org/10.1186/s12859-017-1949-5>
 
-<a name="ref3">3. Livak, K.J. & Schmittgen, T.D. (2001). Analysis of Relative Gene Expression Data Using Real-Time Quantitative PCR and the 2<sup>−ΔΔCT</sup> Method. Methods, 25 (4), 402–408. <https://doi.org/10.1006/meth.2001.1262></a>
+<a name="ref3"></a>3. Livak, K.J. & Schmittgen, T.D. (2001). Analysis of Relative Gene Expression Data Using Real-Time Quantitative PCR and the 2<sup>−ΔΔCT</sup> Method. Methods, 25 (4), 402–408. <https://doi.org/10.1006/meth.2001.1262>
 
-<a name="ref4">4. Taylor, S.C., Nadeau, K., Abbasi, M., Lachance, C., Nguyen, M. & Fenrich, J. (2019). The Ultimate qPCR Experiment: Producing Publication Quality, Reproducible Data the First Time. Trends in Biotechnology, 37 (7), 761–774. <https://doi.org/10.1016/j.tibtech.2018.12.002></a>
+<a name="ref4"></a>4. Taylor, S.C., Nadeau, K., Abbasi, M., Lachance, C., Nguyen, M. & Fenrich, J. (2019). The Ultimate qPCR Experiment: Producing Publication Quality, Reproducible Data the First Time. Trends in Biotechnology, 37 (7), 761–774. <https://doi.org/10.1016/j.tibtech.2018.12.002>
 

@@ -6,14 +6,15 @@
 ## R package for automated processing of real-time qPCR data
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
-The goal of the `qPCR.CFX.process` package is to facilitate the
-processing of real-time quantitative PCR results, exported by the
-Bio-Rad CFX Connect software. It is meant for relative quantification of
-target genes, and supports one or multiple reference genes. Its input is
-calculated quantification cycle (Cq) values and its output is relative
-quantity to a designated control sample.
+The `qPCR.CFX.process` package aims to facilitate the processing of
+real-time quantitative PCR results exported by the Bio-Rad CFX Connect
+software. It is meant for relative quantification of target genes, and
+supports one or multiple reference genes. Its input is calculated
+quantification cycle (Cq) values and its output is relative quantity to
+a designated control sample.
 
 If standard curve reactions are included, primer efficiencies are
 calculated and the method established by Pfaffl
@@ -47,24 +48,24 @@ The `qPCR.CFX.process` package makes certain assumptions about the
 structure of the data. Naming conventions in your setup should comply
 with these assumptions. The following rules should be followed:
 
--   Primer efficiencies are calculated from standard curves, based on
-    serial dilutions of the template. The starting quantity input by the
-    user is in arbitrary units, but the dilution rate is important. For
-    example, input starting quantities of 5, 1, 0.2 and 0.04 should give
-    the same efficiency results as 10, 2, 0.4 and 0.08 (both describe a
-    dilution rate of 5).
+- Primer efficiencies are calculated from standard curves, based on
+  serial dilutions of the template. The starting quantity input by the
+  user is in arbitrary units, but the dilution rate is important. For
+  example, input starting quantities of 5, 1, 0.2 and 0.04 should give
+  the same efficiency results as 10, 2, 0.4 and 0.08 (both describe a
+  dilution rate of 5).
 
--   The “sample” field is used both for the name of the reaction
-    template and for its biological replicate number. The biological
-    replicate number should come last and be separated with a space from
-    the sample’s name. For example: “template name X”, where X is the
-    biological replicate number. Sample name doesn’t matter for
-    calculations in standard curve reactions, as the same template is
-    always used. Use a descriptive name for your convenience.
+- The “sample” field is used both for the name of the reaction template
+  and for its biological replicate number. The biological replicate
+  number should come last and be separated with a space from the
+  sample’s name. For example: “template name X”, where X is the
+  biological replicate number. Sample name doesn’t matter for
+  calculations in standard curve reactions, as the same template is
+  always used. Use a descriptive name for your convenience.
 
--   Technical replicates should have the exact same names in all fields.
-    They are essentially copies of the same reaction and their Cq values
-    will be averaged.
+- Technical replicates should have the exact same names in all fields.
+  They are essentially copies of the same reaction and their Cq values
+  will be averaged.
 
 ## Example
 
@@ -96,14 +97,14 @@ Cq.data <- data.table::fread("demo_data/username_date_time_model - Quantificatio
 Cq.data |> head() |> knitr::kable()
 ```
 
-| Target             | Content | Sample    |       Cq | Starting.Quantity..SQ. | Log.Starting.Quantity |
-|:-------------------|:--------|:----------|---------:|-----------------------:|----------------------:|
-| gene.of.interest.1 | Std     | wild.type | 25.31687 |                      5 |               0.69897 |
-| gene.of.interest.1 | Std     | wild.type | 25.18056 |                      5 |               0.69897 |
-| gene.of.interest.1 | Std     | wild.type | 25.20548 |                      5 |               0.69897 |
-| gene.of.interest.1 | Std     | wild.type | 27.47060 |                      1 |               0.00000 |
-| gene.of.interest.1 | Std     | wild.type | 27.59993 |                      1 |               0.00000 |
-| gene.of.interest.1 | Std     | wild.type | 27.50947 |                      1 |               0.00000 |
+| Target | Content | Sample | Cq | Starting.Quantity..SQ. | Log.Starting.Quantity |
+|:---|:---|:---|---:|---:|---:|
+| gene.of.interest.1 | Std | wild.type | 25.31687 | 5 | 0.69897 |
+| gene.of.interest.1 | Std | wild.type | 25.18056 | 5 | 0.69897 |
+| gene.of.interest.1 | Std | wild.type | 25.20548 | 5 | 0.69897 |
+| gene.of.interest.1 | Std | wild.type | 27.47060 | 1 | 0.00000 |
+| gene.of.interest.1 | Std | wild.type | 27.59993 | 1 | 0.00000 |
+| gene.of.interest.1 | Std | wild.type | 27.50947 | 1 | 0.00000 |
 
 The `check.names=TRUE` argument of `fread` converts the spaces to dots
 in the field names, to minimize downstream processing errors. To see the
@@ -113,27 +114,27 @@ file](https://github.com/dimitriskokoretsis/qPCR.CFX.process/raw/main/demo_data/
 Each row (record) of the table corresponds to a single well, and each
 column (field) represents the following information:
 
--   `Target`: The gene being amplified - essentially, the primer pair
-    used in the reaction.
+- `Target`: The gene being amplified - essentially, the primer pair used
+  in the reaction.
 
--   `Content`: The type of reaction. It is set during setup with the
-    Bio-Rad CFX Connect software and can have one of 3 values:
+- `Content`: The type of reaction. It is set during setup with the
+  Bio-Rad CFX Connect software and can have one of 3 values:
 
-    -   “NTC”: non-template control
+  - “NTC”: non-template control
 
-    -   “Std”: standard curve reaction
+  - “Std”: standard curve reaction
 
-    -   “Unkn”: unknown sample reaction
+  - “Unkn”: unknown sample reaction
 
--   `Sample`: The reaction template and its biological replicate number.
+- `Sample`: The reaction template and its biological replicate number.
 
--   `Cq`: The calculated quantification cycle of the reaction.
+- `Cq`: The calculated quantification cycle of the reaction.
 
--   `Starting.Quantity..SQ`: Only for standard curve reactions, the
-    template’s starting quantity as was input during reaction setup.
+- `Starting.Quantity..SQ`: Only for standard curve reactions, the
+  template’s starting quantity as was input during reaction setup.
 
--   `Log.Starting.Quantity`: Only for standard curve reactions, the
-    base-10 logarithm of the starting quantity.
+- `Log.Starting.Quantity`: Only for standard curve reactions, the
+  base-10 logarithm of the starting quantity.
 
 Actual exported files from Bio-Rad CFX Connect contain more fields, but
 this is all the information needed for the expression analysis.
@@ -179,18 +180,17 @@ str(qPCR.analysis,max.level=1)
 
 Therefore, the `qPCR.analysis` list has 4 elements:
 
--   `NTC`: A `data.table` with primer targets and Cq values, each row
-    being a non-template control reaction.
+- `NTC`: A `data.table` with primer targets and Cq values, each row
+  being a non-template control reaction.
 
--   `std.curve`: A list of 3 elements. See [Standard curve
-    calculations](#standard-curve-calculations) section for more
-    details.
+- `std.curve`: A list of 3 elements. See [Standard curve
+  calculations](#standard-curve-calculations) section for more details.
 
--   `unk.rxn`: A `data.table` with Cq values for each sample, biological
-    replicate and gene.
+- `unk.rxn`: A `data.table` with Cq values for each sample, biological
+  replicate and gene.
 
--   `expression`: A `data.table` with the calculated expression of each
-    sample, biological replicate and target gene.
+- `expression`: A `data.table` with the calculated expression of each
+  sample, biological replicate and target gene.
 
 #### Non-template controls
 
@@ -230,17 +230,17 @@ str(qPCR.analysis$std.curve,max.level=1)
 #>   ..- attr(*, ".internal.selfref")=<externalptr> 
 #>   ..- attr(*, "index")= int(0) 
 #>   .. ..- attr(*, "__Target")= int(0) 
-#>  $ plot        :List of 9
+#>  $ plot        :List of 11
 #>   ..- attr(*, "class")= chr [1:2] "gg" "ggplot"
 ```
 
--   `data`: A `data.table` with the Cq values against log(Starting
-    quantity) for each target gene.
+- `data`: A `data.table` with the Cq values against log(Starting
+  quantity) for each target gene.
 
--   `efficiencies`: A `data.table` with the calculated efficiencies for
-    each target gene.
+- `efficiencies`: A `data.table` with the calculated efficiencies for
+  each target gene.
 
--   `plot`: A `ggplot2`-based scatter plot with drawn standard curves.
+- `plot`: A `ggplot2`-based scatter plot with drawn standard curves.
 
 ``` r
 # Display "data" data.table
@@ -288,7 +288,7 @@ calculated primer efficiency (1 corresponds to 100%) and
 ``` r
 # Display plot
 qPCR.analysis$std.curve$plot
-#> `geom_smooth()` using formula 'y ~ x'
+#> `geom_smooth()` using formula = 'y ~ x'
 ```
 
 <img src="man/figures/README-unnamed-chunk-11-1.png" width="100%" />
@@ -329,15 +329,15 @@ knitr::kable(qPCR.analysis$unk.rxn)
 | test.condition    | 2        | reference.gene     |     25.89713 |  0.2034858 |
 | test.condition    | 3        | reference.gene     |     25.80833 |  0.2916914 |
 
--   `Sample`: Name of sample template.
+- `Sample`: Name of sample template.
 
--   `Biol.rep`: Biological replicate number.
+- `Biol.rep`: Biological replicate number.
 
--   `Target`: Name of target gene.
+- `Target`: Name of target gene.
 
--   `Cq.tech.mean`: Arithmetic mean between technical replicates.
+- `Cq.tech.mean`: Arithmetic mean between technical replicates.
 
--   `Cq.tech.sd`: Standard deviation between technical replicates.
+- `Cq.tech.sd`: Standard deviation between technical replicates.
 
 #### Calculated expression
 
@@ -350,80 +350,74 @@ and gene of interest.
 knitr::kable(qPCR.analysis$expression)
 ```
 
-| Sample            | Biol.rep | Target             | Cq.tech.mean | reference.gene.Cq.tech.mean | reference.gene.amplification.base | reference.gene.Cq.weighed | Ref.Cq.weighed.mean | GOI.amplification.base | GOI.Cq.weighed | DCq.weighed | control.DCq.weighed | log2.fold.change | fold.change |
-|:------------------|:---------|:-------------------|-------------:|----------------------------:|----------------------------------:|--------------------------:|--------------------:|-----------------------:|---------------:|------------:|--------------------:|-----------------:|------------:|
-| control.condition | 1        | gene.of.interest.1 |     28.02832 |                    25.83010 |                          2.081375 |                  27.31629 |            27.31629 |               2.161658 |       31.17135 |  -3.8550688 |           -4.174510 |        0.3194415 |   1.2478474 |
-| control.condition | 2        | gene.of.interest.1 |     27.89776 |                    25.57865 |                          2.081375 |                  27.05037 |            27.05037 |               2.161658 |       31.02616 |  -3.9757904 |           -4.174510 |        0.1987198 |   1.1476795 |
-| control.condition | 3        | gene.of.interest.1 |     28.51541 |                    25.55031 |                          2.081375 |                  27.02040 |            27.02040 |               2.161658 |       31.71307 |  -4.6926716 |           -4.174510 |       -0.5181613 |   0.6982612 |
-| test.condition    | 1        | gene.of.interest.1 |     26.60088 |                    25.54889 |                          2.081375 |                  27.01889 |            27.01889 |               2.161658 |       29.58385 |  -2.5649640 |           -4.174510 |        1.6095462 |   3.0515584 |
-| test.condition    | 2        | gene.of.interest.1 |     26.29397 |                    25.89713 |                          2.081375 |                  27.38716 |            27.38716 |               2.161658 |       29.24252 |  -1.8553562 |           -4.174510 |        2.3191540 |   4.9903951 |
-| test.condition    | 3        | gene.of.interest.1 |     26.99629 |                    25.80833 |                          2.081375 |                  27.29326 |            27.29326 |               2.161658 |       30.02360 |  -2.7303406 |           -4.174510 |        1.4441697 |   2.7210618 |
-| control.condition | 1        | gene.of.interest.2 |     34.82052 |                    25.83010 |                          2.081375 |                  27.31629 |            27.31629 |               1.821933 |       30.13612 |  -2.8198319 |           -3.054538 |        0.2347063 |   1.1766672 |
-| control.condition | 2        | gene.of.interest.2 |     35.17060 |                    25.57865 |                          2.081375 |                  27.05037 |            27.05037 |               1.821933 |       30.43910 |  -3.3887355 |           -3.054538 |       -0.3341973 |   0.7932254 |
-| control.condition | 3        | gene.of.interest.2 |     34.63487 |                    25.55031 |                          2.081375 |                  27.02040 |            27.02040 |               1.821933 |       29.97545 |  -2.9550472 |           -3.054538 |        0.0994910 |   1.0713954 |
-| test.condition    | 1        | gene.of.interest.2 |     31.58958 |                    25.54889 |                          2.081375 |                  27.01889 |            27.01889 |               1.821933 |       27.33983 |  -0.3209444 |           -3.054538 |        2.7335938 |   6.6511038 |
-| test.condition    | 2        | gene.of.interest.2 |     31.29003 |                    25.89713 |                          2.081375 |                  27.38716 |            27.38716 |               1.821933 |       27.08058 |   0.3065821 |           -3.054538 |        3.3611203 |  10.2753832 |
-| test.condition    | 3        | gene.of.interest.2 |     32.79633 |                    25.80833 |                          2.081375 |                  27.29326 |            27.29326 |               1.821933 |       28.38424 |  -1.0909790 |           -3.054538 |        1.9635592 |   3.9002299 |
+| Sample | Biol.rep | Target | Cq.tech.mean | reference.gene.Cq.tech.mean | reference.gene.amplification.base | reference.gene.Cq.weighed | Ref.Cq.weighed.mean | GOI.amplification.base | GOI.Cq.weighed | DCq.weighed | control.DCq.weighed | log2.fold.change | fold.change |
+|:---|:---|:---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| control.condition | 1 | gene.of.interest.1 | 28.02832 | 25.83010 | 2.081375 | 27.31629 | 27.31629 | 2.161658 | 31.17135 | -3.8550688 | -4.174510 | 0.3194415 | 1.2478474 |
+| control.condition | 2 | gene.of.interest.1 | 27.89776 | 25.57865 | 2.081375 | 27.05037 | 27.05037 | 2.161658 | 31.02616 | -3.9757904 | -4.174510 | 0.1987198 | 1.1476795 |
+| control.condition | 3 | gene.of.interest.1 | 28.51541 | 25.55031 | 2.081375 | 27.02040 | 27.02040 | 2.161658 | 31.71307 | -4.6926716 | -4.174510 | -0.5181613 | 0.6982612 |
+| test.condition | 1 | gene.of.interest.1 | 26.60088 | 25.54889 | 2.081375 | 27.01889 | 27.01889 | 2.161658 | 29.58385 | -2.5649640 | -4.174510 | 1.6095462 | 3.0515584 |
+| test.condition | 2 | gene.of.interest.1 | 26.29397 | 25.89713 | 2.081375 | 27.38716 | 27.38716 | 2.161658 | 29.24252 | -1.8553562 | -4.174510 | 2.3191540 | 4.9903951 |
+| test.condition | 3 | gene.of.interest.1 | 26.99629 | 25.80833 | 2.081375 | 27.29326 | 27.29326 | 2.161658 | 30.02360 | -2.7303406 | -4.174510 | 1.4441697 | 2.7210618 |
+| control.condition | 1 | gene.of.interest.2 | 34.82052 | 25.83010 | 2.081375 | 27.31629 | 27.31629 | 1.821933 | 30.13612 | -2.8198319 | -3.054538 | 0.2347063 | 1.1766672 |
+| control.condition | 2 | gene.of.interest.2 | 35.17060 | 25.57865 | 2.081375 | 27.05037 | 27.05037 | 1.821933 | 30.43910 | -3.3887355 | -3.054538 | -0.3341973 | 0.7932254 |
+| control.condition | 3 | gene.of.interest.2 | 34.63487 | 25.55031 | 2.081375 | 27.02040 | 27.02040 | 1.821933 | 29.97545 | -2.9550472 | -3.054538 | 0.0994910 | 1.0713954 |
+| test.condition | 1 | gene.of.interest.2 | 31.58958 | 25.54889 | 2.081375 | 27.01889 | 27.01889 | 1.821933 | 27.33983 | -0.3209444 | -3.054538 | 2.7335938 | 6.6511038 |
+| test.condition | 2 | gene.of.interest.2 | 31.29003 | 25.89713 | 2.081375 | 27.38716 | 27.38716 | 1.821933 | 27.08058 | 0.3065821 | -3.054538 | 3.3611203 | 10.2753832 |
+| test.condition | 3 | gene.of.interest.2 | 32.79633 | 25.80833 | 2.081375 | 27.29326 | 27.29326 | 1.821933 | 28.38424 | -1.0909790 | -3.054538 | 1.9635592 | 3.9002299 |
 
 There are many fields in the `expression` table to depict calculation
 stages based on Ganger et al. (2017)[<sup>2</sup>](#ref2), but the most
 important ones are the following:
 
--   `Sample`: Name of sample template.
+- `Sample`: Name of sample template.
 
--   `Target`: Name of gene of interest.
+- `Target`: Name of gene of interest.
 
--   `fold.change`: Fold-change of quantity in relation to control
-    sample.
+- `fold.change`: Fold-change of quantity in relation to control sample.
 
 Other fields in the `expression` table:
 
--   `Biol.rep`: Biological replicate number.
+- `Biol.rep`: Biological replicate number.
 
--   `Cq.tech.mean`: Arithmetic average of Cq between technical
-    replicates, for each gene of interest, sample and biological
-    replicate.
+- `Cq.tech.mean`: Arithmetic average of Cq between technical replicates,
+  for each gene of interest, sample and biological replicate.
 
--   `[reference.gene].Cq.tech.mean`: Arithmetic average of Cq between
-    technical replicates, for each reference gene, sample and biological
-    replicate. Field is repeated for each reference gene, with the
-    `[reference.gene]` part being the gene’s name.
+- `[reference.gene].Cq.tech.mean`: Arithmetic average of Cq between
+  technical replicates, for each reference gene, sample and biological
+  replicate. Field is repeated for each reference gene, with the
+  `[reference.gene]` part being the gene’s name.
 
--   `[reference.gene].amplification.base`: Amplification base of each
-    reference gene, as provided by standard curve calculations. If not
-    provided, amplification base 2 will be assumed. Field is repeated
-    for each reference gene, with the `[reference.gene]` part being the
-    gene’s name.
+- `[reference.gene].amplification.base`: Amplification base of each
+  reference gene, as provided by standard curve calculations. If not
+  provided, amplification base 2 will be assumed. Field is repeated for
+  each reference gene, with the `[reference.gene]` part being the gene’s
+  name.
 
--   `[reference.gene].Cq.weighed`: Weighed Cq (or
-    ![Cq\_{ref}^{w}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Cq_%7Bref%7D%5E%7Bw%7D "Cq_{ref}^{w}")),
-    for each reference gene and biological replicate. Calculated as
-    follows:
-    ![Cq\_{ref}^{w} = Cq\_{ref} \\times log\_{2}amplification.base\_{ref}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Cq_%7Bref%7D%5E%7Bw%7D%20%3D%20Cq_%7Bref%7D%20%5Ctimes%20log_%7B2%7Damplification.base_%7Bref%7D "Cq_{ref}^{w} = Cq_{ref} \times log_{2}amplification.base_{ref}").
-    Field is repeated for each reference gene, with the
-    `[reference.gene]` part being the gene’s name.
+- `[reference.gene].Cq.weighed`: Weighed Cq (or $Cq_{ref}^{w}$), for
+  each reference gene and biological replicate. Calculated as follows:
+  $Cq_{ref}^{w} = Cq_{ref} \cdot log_{2}amplification.base_{ref}$. Field
+  is repeated for each reference gene, with the `[reference.gene]` part
+  being the gene’s name.
 
--   `Ref.Cq.weighed.mean`: Arithmetic mean of weighed Cq between all
-    reference genes, for each sample and biological replicate.
+- `Ref.Cq.weighed.mean`: Arithmetic mean of weighed Cq between all
+  reference genes, for each sample and biological replicate.
 
--   `GOI.amplification.base`: Amplification base of each gene of
-    interest, as provided by standard curve calculations. If not
-    provided, amplification base 2 will be assumed.
+- `GOI.amplification.base`: Amplification base of each gene of interest,
+  as provided by standard curve calculations. If not provided,
+  amplification base 2 will be assumed.
 
--   `GOI.Cq.weighed`: Weighed Cq (or
-    ![Cq\_{GOI}^{w}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Cq_%7BGOI%7D%5E%7Bw%7D "Cq_{GOI}^{w}")),
-    for each gene of interest and biological replicate. Calculated as
-    follows:
-    ![Cq\_{GOI}^{w} = Cq\_{GOI} \\times log\_{2}amplification.base\_{GOI}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Cq_%7BGOI%7D%5E%7Bw%7D%20%3D%20Cq_%7BGOI%7D%20%5Ctimes%20log_%7B2%7Damplification.base_%7BGOI%7D "Cq_{GOI}^{w} = Cq_{GOI} \times log_{2}amplification.base_{GOI}")
+- `GOI.Cq.weighed`: Weighed Cq (or $Cq_{GOI}^{w}$), for each gene of
+  interest and biological replicate. Calculated as follows:
+  $Cq_{GOI}^{w} = Cq_{GOI} \cdot log_{2}amplification.base_{GOI}$
 
--   `DCq.weighed`: Difference between `Ref.Cq.weighed.mean` and and
-    `GOI.Cq.weighed`.
+- `DCq.weighed`: Difference between `Ref.Cq.weighed.mean` and and
+  `GOI.Cq.weighed`.
 
--   `control.DCq.weighed`: Average `DCq.weighed` of designated control
-    sample, for each gene of interest.
+- `control.DCq.weighed`: Average `DCq.weighed` of designated control
+  sample, for each gene of interest.
 
--   `log2.fold.change`: Difference between `DCq.weighed` and
-    `control.DCq.weighed`. Also equal to log<sub>2</sub> of fold-change.
+- `log2.fold.change`: Difference between `DCq.weighed` and
+  `control.DCq.weighed`. Also equal to log<sub>2</sub> of fold-change.
 
 ### Visualize expression results
 
@@ -463,22 +457,22 @@ expression.plot
 
 ## References
 
-<a name="ref1">1. Pfaffl, M.W. (2001). A new mathematical model for
+<a name="ref1"></a>1. Pfaffl, M.W. (2001). A new mathematical model for
 relative quantification in real-time RT–PCR. Nucleic Acids Research, 29
-(9), e45. <https://doi.org/10.1093/nar/29.9.e45></a>
+(9), e45. <https://doi.org/10.1093/nar/29.9.e45>
 
-<a name="ref2">2. Ganger, M.T., Dietz, G.D. & Ewing, S.J. (2017). A
+<a name="ref2"></a>2. Ganger, M.T., Dietz, G.D. & Ewing, S.J. (2017). A
 common base method for analysis of qPCR data and the application of
 simple blocking in qPCR experiments. BMC Bioinformatics, 18, 534.
-<https://doi.org/10.1186/s12859-017-1949-5></a>
+<https://doi.org/10.1186/s12859-017-1949-5>
 
-<a name="ref3">3. Livak, K.J. & Schmittgen, T.D. (2001). Analysis of
+<a name="ref3"></a>3. Livak, K.J. & Schmittgen, T.D. (2001). Analysis of
 Relative Gene Expression Data Using Real-Time Quantitative PCR and the
 2<sup>−ΔΔCT</sup> Method. Methods, 25 (4), 402–408.
-<https://doi.org/10.1006/meth.2001.1262></a>
+<https://doi.org/10.1006/meth.2001.1262>
 
-<a name="ref4">4. Taylor, S.C., Nadeau, K., Abbasi, M., Lachance, C.,
-Nguyen, M. & Fenrich, J. (2019). The Ultimate qPCR Experiment: Producing
-Publication Quality, Reproducible Data the First Time. Trends in
-Biotechnology, 37 (7), 761–774.
-<https://doi.org/10.1016/j.tibtech.2018.12.002></a>
+<a name="ref4"></a>4. Taylor, S.C., Nadeau, K., Abbasi, M., Lachance,
+C., Nguyen, M. & Fenrich, J. (2019). The Ultimate qPCR Experiment:
+Producing Publication Quality, Reproducible Data the First Time. Trends
+in Biotechnology, 37 (7), 761–774.
+<https://doi.org/10.1016/j.tibtech.2018.12.002>
