@@ -11,18 +11,21 @@
 
 The `qPCR.CFX.process` package aims to facilitate the processing of
 real-time quantitative PCR results exported by the Bio-Rad CFX Connect
-software. It is meant for relative quantification of target genes, and
-supports one or multiple reference genes. Its input is calculated
-quantification cycle (Cq) values and its output is relative quantity to
-a designated control sample.
+software.
+
+It is meant for relative quantification of target genes, and supports
+one or multiple reference genes. Its input is calculated quantification
+cycle (Cq) values and its output is relative quantity to a designated
+control sample.
 
 If standard curve reactions are included, primer efficiencies are
 calculated and the method established by Pfaffl
 (2001)[<sup>1</sup>](#ref1) is applied to calculate relative quantity.
 The *common base*[<sup>2</sup>](#ref2) calculation approach is followed,
-which gives identical results to the Pfaffl calculation approach.
-Otherwise, the 2<sup>-ΔΔCt</sup> method[<sup>3</sup>](#ref3) is applied,
-assuming primer efficiencies to be equal to 100%.
+which gives identical results to the Pfaffl method. If standard curve
+reactions are not included, the 2<sup>-ΔΔCt</sup>
+method[<sup>3</sup>](#ref3) is applied, assuming all primer efficiencies
+to be 100%.
 
 ## Installation
 
@@ -45,23 +48,22 @@ devtools::install_github("dimitriskokoretsis/qPCR.CFX.process")
 ## Setting up the real-time qPCR run
 
 The `qPCR.CFX.process` package makes certain assumptions about the
-structure of the data. Naming conventions in your setup should comply
-with these assumptions. The following rules should be followed:
+structure of the data. Naming conventions in your setup must comply with
+these assumptions:
 
 - Primer efficiencies are calculated from standard curves, based on
   serial dilutions of the template. The starting quantity input by the
   user is in arbitrary units, but the dilution rate is important. For
-  example, input starting quantities of 5, 1, 0.2 and 0.04 should give
-  the same efficiency results as 10, 2, 0.4 and 0.08 (both describe a
-  dilution rate of 5).
+  example, input starting quantities of 5, 1, 0.2 and 0.04 give the same
+  efficiency results as 10, 2, 0.4 and 0.08 (both describe a dilution
+  rate of 5).
 
-- The “sample” field is used both for the name of the reaction template
+- The `sample` field is used both for the name of the reaction template
   and for its biological replicate number. The biological replicate
   number should come last and be separated with a space from the
   sample’s name. For example: “template name X”, where X is the
-  biological replicate number. Sample name doesn’t matter for
-  calculations in standard curve reactions, as the same template is
-  always used. Use a descriptive name for your convenience.
+  biological replicate number. Sample name doesn’t matter for standard
+  curve reactions, use a descriptive name for your convenience.
 
 - Technical replicates should have the exact same names in all fields.
   They are essentially copies of the same reaction and their Cq values
@@ -85,7 +87,7 @@ calculated quantification cycle (Cq) per well.
 
 There are different ways to import a CSV file into the R environment. We
 will use the `fread` function of the `data.table` package to import the
-data as a `data.table`, which we will call `Cq.data`.
+data as a table called `Cq.data`.
 
 ``` r
 # Import data from file
